@@ -2,8 +2,3 @@
 __pycache__/
 build/
 dist/
-ImageReverse.spec
-ImageReverse.ts
-ImageReverse.ui
-icon.ico
-resources.qrc
