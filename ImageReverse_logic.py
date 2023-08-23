@@ -188,18 +188,18 @@ class MainForm(QMainWindow, Ui_Form):
                     oldPath2 = os.path.join(oldPath, oldName2)
                     #  \temp\01站立\body_0 +s|r|h|a|c|d
                     if os.path.isdir(oldPath2):
-                        if oldName2 == "body_0" + self.renameMapping2[oldName]:
+                        if oldName2[-2:] == "0" + self.renameMapping2[oldName]:
                             shutil.move(oldPath2, oldPath + "\\1上")
-                        if oldName2 == "body_1" + self.renameMapping2[oldName]:
+                        if oldName2[-2:] == "1" + self.renameMapping2[oldName]:
                             shutil.copytree(oldPath2, oldPath + "\\8左上")
                             shutil.move(oldPath2, oldPath + "\\2右上")
-                        if oldName2 == "body_2" + self.renameMapping2[oldName]:
+                        if oldName2[-2:] == "2" + self.renameMapping2[oldName]:
                             shutil.copytree(oldPath2, oldPath + "\\7左")
                             shutil.move(oldPath2, oldPath + "\\3右")
-                        if oldName2 == "body_3" + self.renameMapping2[oldName]:
+                        if oldName2[-2:] == "3" + self.renameMapping2[oldName]:
                             shutil.copytree(oldPath2, oldPath + "\\6左下")
                             shutil.move(oldPath2, oldPath + "\\4右下")
-                        if oldName2 == "body_4" + self.renameMapping2[oldName]:
+                        if oldName2[-2:] == "4" + self.renameMapping2[oldName]:
                             shutil.move(oldPath2, oldPath + "\\5下")
                     else:
                         try:
@@ -232,7 +232,10 @@ class MainForm(QMainWindow, Ui_Form):
                     if os.path.isdir(oldPath2) and oldName2 in self.renameMapping4:
                         count = 0
                         for oldName3 in os.listdir(oldPath2):
+                            oldPath3 = os.path.join(oldPath2, oldName3)
                             # \temp\01站立\1上\00.png
+                            if os.path.splitext(oldPath3)[1].lower() == ".png":
+                                shutil.move(oldPath3, oldPath2 + "\\" + str(count))
                             count += 1
                         if count < 8 and count > 2:
                             for i in range(8 - count):
@@ -305,11 +308,11 @@ class MainForm(QMainWindow, Ui_Form):
         self.barResetTarget.setValue(95)  # 控制进度条
 
         # 删除temp文件夹
-        try:
-            shutil.rmtree(imgFolder)
-            shutil.rmtree(tempFolder)
-        except FileNotFoundError:
-            pass
+        # try:
+        #     shutil.rmtree(imgFolder)
+        #     shutil.rmtree(tempFolder)
+        # except FileNotFoundError:
+        #     pass
         self.barResetTarget.setValue(98)  # 控制进度条
 
         # 将结果路径输入至目标路径
