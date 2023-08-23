@@ -308,11 +308,11 @@ class MainForm(QMainWindow, Ui_Form):
         self.barResetTarget.setValue(95)  # 控制进度条
 
         # 删除temp文件夹
-        # try:
-        #     shutil.rmtree(imgFolder)
-        #     shutil.rmtree(tempFolder)
-        # except FileNotFoundError:
-        #     pass
+        try:
+            shutil.rmtree(imgFolder)
+            shutil.rmtree(tempFolder)
+        except FileNotFoundError:
+            pass
         self.barResetTarget.setValue(98)  # 控制进度条
 
         # 将结果路径输入至目标路径
