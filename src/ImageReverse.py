@@ -1,6 +1,6 @@
 import sys, ctypes
 from PySide6.QtWidgets import QApplication
-from ImageReverse_logic import MainForm
+from controller.ImageReverse_logic import MainForm
 
 
 if __name__ == "__main__":

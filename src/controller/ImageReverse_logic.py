@@ -1,6 +1,6 @@
 import os, re, time, shutil, threading
 from PySide6.QtWidgets import QMainWindow, QFileDialog
-from ImageReverse_ui import Ui_Form
+from ui.ImageReverse_ui import Ui_Form
 from PIL import Image
 
 
