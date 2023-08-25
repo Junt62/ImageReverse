@@ -15,10 +15,10 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QFrame, QGroupBox, QHBoxLayout,
-    QHeaderView, QLabel, QLineEdit, QProgressBar,
-    QPushButton, QSizePolicy, QTextEdit, QTreeWidget,
-    QTreeWidgetItem, QWidget)
+from PySide6.QtWidgets import (QAbstractScrollArea, QApplication, QFrame, QGroupBox,
+    QHBoxLayout, QHeaderView, QLabel, QLineEdit,
+    QProgressBar, QPushButton, QSizePolicy, QTextEdit,
+    QTreeWidget, QTreeWidgetItem, QWidget)
 import resources.resources_rc
 
 class Ui_Form(object):
@@ -98,6 +98,7 @@ class Ui_Form(object):
         self.listImgTree = QTreeWidget(self.groupListImg)
         self.listImgTree.setObjectName(u"listImgTree")
         self.listImgTree.setGeometry(QRect(10, 20, 251, 281))
+        self.listImgTree.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContentsOnFirstShow)
         self.groupProgress = QGroupBox(Form)
         self.groupProgress.setObjectName(u"groupProgress")
         self.groupProgress.setGeometry(QRect(10, 90, 271, 141))
@@ -154,6 +155,7 @@ class Ui_Form(object):
         self.inputMessage.setObjectName(u"inputMessage")
         self.inputMessage.setGeometry(QRect(10, 20, 251, 331))
         self.inputMessage.setReadOnly(True)
+        self.inputMessage.setTextInteractionFlags(Qt.NoTextInteraction)
         self.groupImgSmall = QGroupBox(Form)
         self.groupImgSmall.setObjectName(u"groupImgSmall")
         self.groupImgSmall.setGeometry(QRect(570, 10, 421, 581))

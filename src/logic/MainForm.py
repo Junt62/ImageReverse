@@ -1,3 +1,4 @@
+from datetime import datetime
 import os, re, time, shutil, threading
 from PySide6.QtWidgets import QMainWindow, QFileDialog
 from logic.GroupListImg import GroupListImg
@@ -70,6 +71,8 @@ class MainForm(QMainWindow, Ui_Form):
         self.groupImgBig = GroupImgBig(self)
         self.groupImgSmall = GroupImgSmall(self)
         self.groupMessage = GroupMessage(self)
+
+        self.groupMessage.successMessage("软件初始化完成，可以开始操作")
 
         self.tempFolder = os.path.join(self.inputSavePath.text(), "temp")
         self.fillFolder = os.path.join(self.inputSavePath.text(), "fill")

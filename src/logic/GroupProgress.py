@@ -3,6 +3,8 @@ import shutil
 from tkinter import Image
 from PySide6.QtWidgets import QTreeWidgetItem
 
+from logic.GroupMessage import GroupMessage
+
 
 class GroupProgress:
     def __init__(self, parent):
@@ -12,20 +14,22 @@ class GroupProgress:
         self.parent.btnImageReverse.clicked.connect(self.btnImageReverseClicked)
 
     def btnReadImgClicked(self):
-        startFolder = self.parent.inputImgPath.text()
-
-        self.parent.listImgTree.clear()
-
-        tempFolder = [startFolder]
-
-        while tempFolder:
-            tempFolder = tempFolder.pop(0)
-            for name in os.listdir(tempFolder):
-                path = os.path.join(tempFolder, name)
-                item = QTreeWidgetItem(self.parent.listImgTree, [name, tempFolder])
-                self.parent.listImgTree.addTopLevelItem(item)
-                if os.path.isdir(path):
-                    tempFolder.append(path)
+        if not self.parent.inputImgPath.text():
+            a = GroupMessage
+            a.errorMessage("未设置素材路径")
+        else:
+            start = self.parent.inputImgPath.text()
+            self.parent.listImgTree.clear()
+            temp = [start]
+            while temp:
+                current = temp.pop(0)
+                for name in os.listdir(current):
+                    path = os.path.join(current, name)
+                    item = QTreeWidgetItem(self.parent.listImgTree, [name, current])
+                    self.parent.listImgTree.addTopLevelItem(item)
+                    if os.path.isdir(path):
+                        temp.append(path)
+            GroupMessage.successMessage(self, "读取文件夹完成")
 
     def btnChangeStructureClicked(self):
         self.parent.newFolder = self.parent.parent.inputSavePath.text()
