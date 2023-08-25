@@ -1,10 +1,19 @@
 import os, re, time, shutil, threading
 from PySide6.QtWidgets import QMainWindow, QFileDialog
-from ui.ImageReverse_ui import Ui_Form
+from logic.GroupListImg import GroupListImg
+from logic.GroupMessage import GroupMessage
+from logic.GroupPath import GroupPath
+from logic.GroupImgBig import GroupImgBig
+from logic.GroupImgSmall import GroupImgSmall
+from logic.GroupProgress import GroupProgress
+from resources.ImageReverse_ui import Ui_Form
 from PIL import Image
 
 
 class MainForm(QMainWindow, Ui_Form):
+    tempFolder = ""
+    fillFolder = ""
+
     pattern = re.compile(r"^[A-Za-z]:\\[^\\\/:*?\"<>|]")
     thread = threading.Thread()
     renameMapping = {
@@ -55,20 +64,28 @@ class MainForm(QMainWindow, Ui_Form):
     def __init__(self, parent=None):
         super(MainForm, self).__init__(parent)
         self.setupUi(self)
-        self.btnSelectTarget.clicked.connect(self.btnSelectTargetClicked)
-        self.btnSelectResult.clicked.connect(self.btnSelectResultClicked)
-        self.btnResetTarget.clicked.connect(self.btnResetTargetClicked)
-        self.btnImageReverse.clicked.connect(self.btnImageReverseClicked)
-        self.inputTarget.textChanged.connect(self.inputTargetTextChanged)
-        self.inputResult.textChanged.connect(self.inputResultTextChanged)
-        self.thread = threading.Thread(target=self.timeCheck)
-        self.thread.daemon = True
-        self.thread.start()
+        self.groupPath = GroupPath(self)
+        self.groupProgress = GroupProgress(self)
+        self.groupListimg = GroupListImg(self)
+        self.groupImgBig = GroupImgBig(self)
+        self.groupImgSmall = GroupImgSmall(self)
+        self.groupMessage = GroupMessage(self)
+
+        self.tempFolder = os.path.join(self.inputSavePath.text(), "temp")
+        self.fillFolder = os.path.join(self.inputSavePath.text(), "fill")
+
+        # self.btnSelectTarget.clicked.connect(self.btnSelectTargetClicked)
+        # self.btnSelectResult.clicked.connect(self.btnSelectResultClicked)
+        # self.btnResetTarget.clicked.connect(self.btnResetTargetClicked)
+        # self.btnImageReverse.clicked.connect(self.btnImageReverseClicked)
+        # self.inputTarget.textChanged.connect(self.inputTargetTextChanged)
+        # self.inputResult.textChanged.connect(self.inputResultTextChanged)
 
     def btnSelectTargetClicked(self):
         fileAddress = QFileDialog.getExistingDirectory(self, "选择路径", os.getcwd())
         fileAddress = fileAddress.replace("/", "\\")
-        self.updateInputTarget(fileAddress)
+        if fileAddress:
+            self.updateInputTarget(fileAddress)
 
     def btnSelectResultClicked(self):
         fileAddress = QFileDialog.getExistingDirectory(self, "选择路径", os.getcwd())
