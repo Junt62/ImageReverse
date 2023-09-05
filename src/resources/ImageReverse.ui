@@ -43,131 +43,125 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>0</y>
+     <y>10</y>
      <width>271</width>
-     <height>91</height>
+     <height>81</height>
     </rect>
    </property>
    <property name="title">
     <string>路径选择</string>
    </property>
-   <widget class="QWidget" name="horizontalLayoutWidget">
+   <widget class="QLineEdit" name="inputImgPath">
     <property name="geometry">
      <rect>
       <x>10</x>
       <y>20</y>
-      <width>251</width>
-      <height>31</height>
+      <width>188</width>
+      <height>21</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="ImgPath">
-     <property name="spacing">
-      <number>2</number>
-     </property>
-     <item>
-      <widget class="QLineEdit" name="inputImgPath">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="btnImgPath">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="autoFillBackground">
-        <bool>false</bool>
-       </property>
-       <property name="text">
-        <string>素材路径</string>
-       </property>
-       <property name="autoDefault">
-        <bool>false</bool>
-       </property>
-       <property name="default">
-        <bool>false</bool>
-       </property>
-       <property name="flat">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
    </widget>
-   <widget class="QWidget" name="layoutWidget">
+   <widget class="QPushButton" name="btnImgPath">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>19</y>
+      <width>61</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string>素材路径</string>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="inputSavePath">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>10</x>
       <y>50</y>
-      <width>251</width>
-      <height>31</height>
+      <width>188</width>
+      <height>21</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="SavePath">
-     <property name="spacing">
-      <number>2</number>
-     </property>
-     <item>
-      <widget class="QLineEdit" name="inputSavePath">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="btnSavePath">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="autoFillBackground">
-        <bool>false</bool>
-       </property>
-       <property name="text">
-        <string>保存位置</string>
-       </property>
-       <property name="autoDefault">
-        <bool>false</bool>
-       </property>
-       <property name="default">
-        <bool>false</bool>
-       </property>
-       <property name="flat">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-    </layout>
+   </widget>
+   <widget class="QPushButton" name="btnSavePath">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>49</y>
+      <width>61</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string>保存位置</string>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
    </widget>
   </widget>
   <widget class="QGroupBox" name="groupListImg">
    <property name="geometry">
     <rect>
      <x>290</x>
-     <y>280</y>
+     <y>290</y>
      <width>271</width>
-     <height>311</height>
+     <height>301</height>
     </rect>
    </property>
    <property name="title">
@@ -179,7 +173,7 @@
       <x>10</x>
       <y>20</y>
       <width>251</width>
-      <height>281</height>
+      <height>271</height>
      </rect>
     </property>
     <property name="sizeAdjustPolicy">
@@ -290,9 +284,9 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>11</x>
       <y>110</y>
-      <width>251</width>
+      <width>249</width>
       <height>21</height>
      </rect>
     </property>
@@ -320,7 +314,7 @@
    <property name="geometry">
     <rect>
      <x>290</x>
-     <y>0</y>
+     <y>10</y>
      <width>271</width>
      <height>281</height>
     </rect>
@@ -328,7 +322,47 @@
    <property name="title">
     <string>大图预览</string>
    </property>
-   <widget class="QLabel" name="labelImgBig1">
+   <widget class="QLabel" name="labelImgBigBack">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>251</width>
+      <height>251</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>50</width>
+      <height>50</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>9999</width>
+      <height>9999</height>
+     </size>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Panel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Sunken</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelImgBigShow">
     <property name="geometry">
      <rect>
       <x>10</x>
