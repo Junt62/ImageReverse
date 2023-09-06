@@ -13,7 +13,7 @@ class GroupProgress:
         self.parent = parent
         self.parent.btnReadImg.clicked.connect(self.btnReadImgClicked)
         self.parent.btnChangeStructure.clicked.connect(self.btnChangeStructureClicked)
-        self.parent.btnImageReverse.clicked.connect(self.btnImageReverseClicked)
+        self.parent.btnImgReverse.clicked.connect(self.btnImgReverseClicked)
 
     def btnReadImgClicked(self):
         if not self.parent.inputImgPath.text():
@@ -43,11 +43,11 @@ class GroupProgress:
             image = Image.new("RGBA", (1, 1), (0, 0, 0, 0))
             image.save(self.parent.fillFolder + "\\" + value + ".png")
 
-    def btnImageReverseClicked(self):
+    def btnImgReverseClicked(self):
         if not self.parent.inputImgPath.text():
             GroupMessage.errorMessage(self, "未设置素材路径")
             return
-        GroupMessage.normalMessage(self, "btnImageReverseClicked")
+        GroupMessage.normalMessage(self, "btnImgReverseClicked")
 
     @contextmanager
     def tryExceptFileNotFoundError(self):

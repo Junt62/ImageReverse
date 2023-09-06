@@ -11,11 +11,13 @@ from resources.ImageReverse_ui import Ui_Form
 from PIL import Image
 
 
-class MainForm(QMainWindow, Ui_Form):
-    tempFolder = ""
-    fillFolder = ""
+class LabelImgBig:
+    def __init__(self, parent):
+        self.parent = parent
+        self.parent
 
-    pattern = re.compile(r"^[A-Za-z]:\\[^\\\/:*?\"<>|]")
+
+class MainForm(QMainWindow, Ui_Form):
     thread = threading.Thread()
     renameMapping = {
         "待机": "01站立",
@@ -71,8 +73,12 @@ class MainForm(QMainWindow, Ui_Form):
         self.groupImgBig = GroupImgBig(self)
         self.groupImgSmall = GroupImgSmall(self)
         self.groupMessage = GroupMessage(self)
-
         self.groupMessage.successMessage("软件初始化完成，可以开始操作")
+
+        self.scrollAreaImgBig.mousePressEvent = self.groupImgBig.mousePressEvent
+        self.scrollAreaImgBig.mouseReleaseEvent = self.groupImgBig.mouseReleaseEvent
+        self.scrollAreaImgBig.mouseMoveEvent = self.groupImgBig.mouseMoveEvent
+        self.scrollAreaImgBig.wheelEvent = self.groupImgBig.wheelEvent
 
         self.tempFolder = os.path.join(self.inputSavePath.text(), "temp")
         self.fillFolder = os.path.join(self.inputSavePath.text(), "fill")
@@ -80,7 +86,7 @@ class MainForm(QMainWindow, Ui_Form):
         # self.btnSelectTarget.clicked.connect(self.btnSelectTargetClicked)
         # self.btnSelectResult.clicked.connect(self.btnSelectResultClicked)
         # self.btnResetTarget.clicked.connect(self.btnResetTargetClicked)
-        # self.btnImageReverse.clicked.connect(self.btnImageReverseClicked)
+        # self.btnImgReverse.clicked.connect(self.btnImgReverseClicked)
         # self.inputTarget.textChanged.connect(self.inputTargetTextChanged)
         # self.inputResult.textChanged.connect(self.inputResultTextChanged)
 
@@ -345,8 +351,8 @@ class MainForm(QMainWindow, Ui_Form):
         self.enableBtnResetTarget(True, "(3)调整图片结构：调整图片结构完成", "color: green;")
         self.barResetTarget.setValue(100)  # 控制进度条
 
-    def btnImageReverseClicked(self):
-        self.enableBtnImageReverse(False, "(4)翻转序列帧图片：翻转序列帧图片进行中...", "color: orange;")
+    def btnImgReverseClicked(self):
+        self.enablebtnImgReverse(False, "(4)翻转序列帧图片：翻转序列帧图片进行中...", "color: orange;")
         self.barImageReverse.setValue(0)
         target = self.inputTarget.text()
 
@@ -408,7 +414,7 @@ class MainForm(QMainWindow, Ui_Form):
             # 更新进度条
             self.barImageReverse.setValue(int((100 - 0) / 600 * index) + 0)
 
-        self.enableBtnImageReverse(True, "(4)翻转序列帧图片：翻转序列帧图片完成", "color: green;")
+        self.enablebtnImgReverse(True, "(4)翻转序列帧图片：翻转序列帧图片完成", "color: green;")
         self.barImageReverse.setValue(100)
 
     def updateInputTarget(self, input):
@@ -451,15 +457,13 @@ class MainForm(QMainWindow, Ui_Form):
         self.labelResetTarget.setText(message)
         self.labelResetTarget.setStyleSheet(color)
 
-    def enableBtnImageReverse(
-        self, enable, message="(4)翻转序列帧图片：", color="color: black;"
-    ):
+    def enablebtnImgReverse(self, enable, message="(4)翻转序列帧图片：", color="color: black;"):
         if enable:
             self.barImageReverse.setEnabled(True)
-            self.btnImageReverse.setEnabled(True)
+            self.btnImgReverse.setEnabled(True)
         else:
             self.barImageReverse.setDisabled(True)
-            self.btnImageReverse.setDisabled(True)
+            self.btnImgReverse.setDisabled(True)
         self.labelImageReverse.setText(message)
         self.labelImageReverse.setStyleSheet(color)
 
@@ -468,7 +472,7 @@ class MainForm(QMainWindow, Ui_Form):
         if count == 0:
             self.enableBtnSelectTarget(True, "(1)请设置目标路径：未检测到图片，请检查路径", "color: red;")
             self.enableBtnResetTarget(False)
-            self.enableBtnImageReverse(False)
+            self.enablebtnImgReverse(False)
         elif count == 600:
             current = self.countFolderImage(path, False)
             if current == 600:
@@ -478,7 +482,7 @@ class MainForm(QMainWindow, Ui_Form):
                 self.enableBtnResetTarget(
                     False, "(3)调整图片结构：检测到 600 张图片,可以进行下一步", "color: green;"
                 )
-                self.enableBtnImageReverse(
+                self.enablebtnImgReverse(
                     True, "(4)翻转序列帧图片：检测到标准序列帧结构，可以翻转图片", "color: green;"
                 )
             else:
@@ -488,7 +492,7 @@ class MainForm(QMainWindow, Ui_Form):
                 self.enableBtnResetTarget(
                     False, "(3)调整图片结构：检测到 600 张图片,可以进行下一步", "color: green;"
                 )
-                self.enableBtnImageReverse(
+                self.enablebtnImgReverse(
                     False, "(4)调整图片结构：未检测到标准序列帧结构，请检查文件夹", "color: red;"
                 )
         elif count > 600:
@@ -496,7 +500,7 @@ class MainForm(QMainWindow, Ui_Form):
                 True, f"(1)请设置目标路径：检测到 {count} 张图片，请检查路径", "color: red;"
             )
             self.enableBtnResetTarget(False)
-            self.enableBtnImageReverse(False)
+            self.enablebtnImgReverse(False)
         else:
             self.enableBtnSelectTarget(
                 True, f"(1)请设置目标路径：检测到 {count} 张图片，可以进行下一步", "color: green;"
@@ -504,7 +508,7 @@ class MainForm(QMainWindow, Ui_Form):
             self.enableBtnResetTarget(
                 True, f"(3)调整图片结构：检测到 {count} 张图片，可以调整图片结构", "color: orange;"
             )
-            self.enableBtnImageReverse(False)
+            self.enablebtnImgReverse(False)
 
     def countFolderImage(self, path, recursion=True):
         count = 0

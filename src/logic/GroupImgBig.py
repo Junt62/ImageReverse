@@ -1,13 +1,16 @@
 import os
 from PIL import Image, ImageDraw
 from logic.GroupMessage import GroupMessage
+from PySide6.QtCore import Qt, QPoint, QSize
+from PySide6.QtGui import QPixmap, QImage, QPainter, QWheelEvent
 from PySide6.QtWidgets import QApplication, QLabel, QMainWindow, QVBoxLayout, QWidget
-from PySide6.QtGui import QPixmap, QImage
 
 
 class GroupImgBig:
     def __init__(self, parent):
         self.parent = parent
+        self.dragOffset = None
+        self.parent.scrollAreaImgBig.setCursor(Qt.SizeAllCursor)
         self.generateBackground()
 
     def generateBackground(self):
@@ -42,5 +45,46 @@ class GroupImgBig:
             ".gif",
             ".bmp",
         ):
-            pixmap = QPixmap(item)
-            self.parent.labelImgBigShow.setPixmap(pixmap)
+            self.parent.pixmap = QPixmap(item)
+            self.parent.labelImgBigShow.setPixmap(self.parent.pixmap)
+            scrollWidth = self.parent.scrollAreaImgBig.width()
+            scrollHeight = self.parent.scrollAreaImgBig.height()
+            pixmapWidth = self.parent.pixmap.width()
+            pixmapHeight = self.parent.pixmap.height()
+            self.parent.labelImgBigShow.setFixedSize(pixmapWidth * 4, pixmapHeight * 4)
+            pos = QPoint(
+                -(pixmapWidth * 2 - scrollWidth / 2),
+                -(pixmapHeight * 2 - scrollHeight / 2),
+            )
+            self.parent.labelImgBigShow.move(pos)
+
+    def mousePressEvent(self, event):
+        if event.button() == Qt.LeftButton:
+            self.dragOffset = event.pos()
+
+    def mouseReleaseEvent(self, event):
+        if event.button() == Qt.LeftButton:
+            self.dragOffset = QPoint()
+
+    def mouseMoveEvent(self, event):
+        if (
+            event.buttons() == Qt.LeftButton
+            and not self.parent.labelImgBigShow.pixmap().isNull()
+        ):
+            newPos = self.parent.labelImgBigShow.pos() + event.pos() - self.dragOffset
+            self.parent.labelImgBigShow.move(newPos)
+            self.dragOffset = event.pos()
+
+    def wheelEvent(self, event: QWheelEvent):
+        pixmapSize = self.parent.labelImgBigShow.pixmap().size()
+        angle = event.angleDelta().y()
+        if angle > 0:
+            pixmapSize += QSize(
+                self.parent.pixmap.width() * 0.1, self.parent.pixmap.height() * 0.1
+            )
+        else:
+            pixmapSize -= QSize(
+                self.parent.pixmap.width() * 0.1, self.parent.pixmap.height() * 0.1
+            )
+        newPixmap = self.parent.pixmap.scaled(pixmapSize)
+        self.parent.labelImgBigShow.setPixmap(newPixmap)

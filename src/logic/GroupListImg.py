@@ -3,6 +3,7 @@ from PySide6.QtWidgets import QTreeWidgetItem
 from logic.GroupImgBig import GroupImgBig
 from logic.GroupImgSmall import GroupImgSmall
 from logic.GroupMessage import GroupMessage
+from PySide6.QtWidgets import QApplication, QLabel, QMainWindow, QVBoxLayout, QWidget
 
 
 class GroupListImg:
@@ -40,6 +41,7 @@ class GroupListImg:
                         first = False
         GroupImgSmall.showImg(self)
         GroupMessage.successMessage(self, f"读取文件夹完成，发现 {count} 张图片")
+        GroupMessage.normalMessage(self, "可点击拖动预览，使用滚轮缩放")
 
     def listImgTreeCurrentItemChanged(self):
         item = self.parent.listImgTree.currentItem()
