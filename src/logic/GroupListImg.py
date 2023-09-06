@@ -9,12 +9,15 @@ from PySide6.QtWidgets import QApplication, QLabel, QMainWindow, QVBoxLayout, QW
 class GroupListImg:
     def __init__(self, parent):
         self.parent = parent
+        self.groupMessage = GroupMessage(self.parent)
+        self.groupImgBig = GroupImgBig(self.parent)
+        self.groupImgSmall = GroupImgSmall(self.parent)
         self.parent.listImgTree.currentItemChanged.connect(
             self.listImgTreeCurrentItemChanged
         )
 
-    def loadImage(self):
-        start = self.parent.inputImgPath.text()
+    def loadImage(self, path):
+        start = path
         self.parent.listImgTree.clear()
         first = True
         count = 0
@@ -37,13 +40,12 @@ class GroupListImg:
                     self.parent.listImgTree.addTopLevelItem(item)
                     if first:
                         self.parent.listImgTree.setCurrentItem(item)
-                        # GroupImgBig.showImg(self, item.text(1) + "\\" + item.text(0))
                         first = False
-        GroupImgSmall.showImg(self)
-        GroupMessage.successMessage(self, f"读取文件夹完成，发现 {count} 张图片")
-        GroupMessage.normalMessage(self, "可点击拖动预览，使用滚轮缩放")
+        self.groupImgSmall.showImg(count)
+        self.groupMessage.successMessage(f"读取文件夹完成，发现 {count} 张图片")
+        self.groupMessage.normalMessage("点击拖动预览，使用滚轮缩放")
 
     def listImgTreeCurrentItemChanged(self):
         item = self.parent.listImgTree.currentItem()
         if item:
-            GroupImgBig.showImg(self, item.text(1) + "\\" + item.text(0))
+            self.groupImgBig.showImg(item.text(1) + "\\" + item.text(0))

@@ -1,17 +1,19 @@
 import os
 from PIL import Image, ImageDraw
-from logic.GroupMessage import GroupMessage
 from PySide6.QtCore import Qt, QPoint, QSize
-from PySide6.QtGui import QPixmap, QImage, QPainter, QWheelEvent
-from PySide6.QtWidgets import QApplication, QLabel, QMainWindow, QVBoxLayout, QWidget
+from PySide6.QtGui import QPixmap, QImage, QWheelEvent
+
+from logic.GroupMessage import GroupMessage
 
 
 class GroupImgBig:
     def __init__(self, parent):
         self.parent = parent
-        self.dragOffset = None
-        self.parent.scrollAreaImgBig.setCursor(Qt.SizeAllCursor)
         self.generateBackground()
+        self.dragOffset = QPoint()
+        self.parent.labelOffset = QPoint(0, 0)
+        self.parent.pixmapScale = 1
+        self.parent.scrollAreaImgBig.setCursor(Qt.SizeAllCursor)
 
     def generateBackground(self):
         target = self.parent.labelImgBigBack
@@ -46,17 +48,23 @@ class GroupImgBig:
             ".bmp",
         ):
             self.parent.pixmap = QPixmap(item)
-            self.parent.labelImgBigShow.setPixmap(self.parent.pixmap)
-            scrollWidth = self.parent.scrollAreaImgBig.width()
-            scrollHeight = self.parent.scrollAreaImgBig.height()
+            # 更新pixmap时使用之前的缩放比例
+            scaledPixmap = self.parent.pixmap.scaled(
+                self.parent.pixmap.width() * self.parent.pixmapScale,
+                self.parent.pixmap.height() * self.parent.pixmapScale,
+            )
+            # 设置pixmap
+            self.parent.labelImgBigShow.setPixmap(scaledPixmap)
+            # 设置label的大小
             pixmapWidth = self.parent.pixmap.width()
             pixmapHeight = self.parent.pixmap.height()
             self.parent.labelImgBigShow.setFixedSize(pixmapWidth * 4, pixmapHeight * 4)
+            # 设置label的位置
             pos = QPoint(
-                -(pixmapWidth * 2 - scrollWidth / 2),
-                -(pixmapHeight * 2 - scrollHeight / 2),
+                -(pixmapWidth * 2 - self.parent.scrollAreaImgBig.width() / 2),
+                -(pixmapHeight * 2 - self.parent.scrollAreaImgBig.height() / 2),
             )
-            self.parent.labelImgBigShow.move(pos)
+            self.parent.labelImgBigShow.move(pos + self.parent.labelOffset)
 
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton:
@@ -71,20 +79,30 @@ class GroupImgBig:
             event.buttons() == Qt.LeftButton
             and not self.parent.labelImgBigShow.pixmap().isNull()
         ):
+            # 拖动pixmap时计算的偏移
             newPos = self.parent.labelImgBigShow.pos() + event.pos() - self.dragOffset
             self.parent.labelImgBigShow.move(newPos)
+
+            # 记录偏移，使得每次更新pixmap时保留原来的位置
+            self.parent.labelOffset = (
+                self.parent.labelOffset + event.pos() - self.dragOffset
+            )
+            print(self.parent.labelOffset)
+
             self.dragOffset = event.pos()
 
     def wheelEvent(self, event: QWheelEvent):
-        pixmapSize = self.parent.labelImgBigShow.pixmap().size()
-        angle = event.angleDelta().y()
-        if angle > 0:
-            pixmapSize += QSize(
-                self.parent.pixmap.width() * 0.1, self.parent.pixmap.height() * 0.1
+        if not self.parent.labelImgBigShow.pixmap().isNull():
+            angle = event.angleDelta().y()
+            if angle > 0:
+                self.parent.pixmapScale += 0.1
+            else:
+                if self.parent.pixmapScale < 0.2:
+                    pass
+                else:
+                    self.parent.pixmapScale -= 0.1
+            scaledPixmap = self.parent.pixmap.scaled(
+                self.parent.pixmap.width() * self.parent.pixmapScale,
+                self.parent.pixmap.height() * self.parent.pixmapScale,
             )
-        else:
-            pixmapSize -= QSize(
-                self.parent.pixmap.width() * 0.1, self.parent.pixmap.height() * 0.1
-            )
-        newPixmap = self.parent.pixmap.scaled(pixmapSize)
-        self.parent.labelImgBigShow.setPixmap(newPixmap)
+            self.parent.labelImgBigShow.setPixmap(scaledPixmap)

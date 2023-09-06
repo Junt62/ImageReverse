@@ -9,13 +9,14 @@ from PIL import Image, ImageDraw
 class GroupImgSmall:
     def __init__(self, parent):
         self.parent = parent
-        self.generateBackground()
-        self.generatedMatrix()
+        self.groupMessage = GroupMessage(self.parent)
+        self.generateBackground(551)
+        # self.showImg(12)
 
-    def generateBackground(self):
+    def generateBackground(self, height):
         target = self.parent.labelImgSmallBack
         imageWidth = 401
-        imageHeight = 551
+        imageHeight = height
         cellSize = 10
         image = Image.new("RGB", (imageWidth, imageHeight), "white")
         draw = ImageDraw.Draw(image)
@@ -34,18 +35,39 @@ class GroupImgSmall:
             image.width * 3,
             QImage.Format_RGB888,
         )
+        target.setFixedSize(imageWidth, imageHeight)
         target.setPixmap(QPixmap.fromImage(qtImage))
 
-    def generatedMatrix(self):
+    def generateMatrix(self, quantity):
+        if quantity != 0:
+            rows = quantity // 4 + 1
+        else:
+            rows = 0
         labels = {}
-        rows, cols = 11, 8
+        i = 0
         for row in range(rows):
-            for col in range(cols):
-                label = QLabel("", self.parent.scrollAreaImgSmallWidget)
+            for col in range(4):
+                i += 1
+                label = QLabel(str(i), self.parent.scrollAreaImgSmallWidget)
+                label.setGeometry(col * 100 - 1, row * 100 - 1, 101, 101)
                 label.setFrameShape(QFrame.StyledPanel)
-                x, y = col * 50 - 1, row * 50 - 1
-                label.setGeometry(x, y, 51, 51)
+                # print(i, label.parent())
+                item = self.parent.listImgTree.currentItem()
+                if item:
+                    img = QImage(item.text(1) + "\\" + item.text(0))
+                    pixmap = QPixmap.fromImage(img)
+                    label.setPixmap(pixmap)
                 labels[(col, row)] = label
+        a = self.parent.scrollAreaImgSmallWidget.findChildren(QLabel)
+        # for child in a:
+        #     print(child.text())
+        height = (rows) * 100
+        if height <= 551:
+            self.parent.scrollAreaImgSmallWidget.setFixedHeight(549)
+            self.generateBackground(551)
+        else:
+            self.parent.scrollAreaImgSmallWidget.setFixedHeight(height - 2)
+            self.generateBackground(height)
 
-    def showImg(self):
-        GroupMessage.normalMessage(self, "showImgSmall")
+    def showImg(self, quantity):
+        self.generateMatrix(quantity)

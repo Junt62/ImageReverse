@@ -164,14 +164,14 @@ class Ui_Form(object):
         self.scrollAreaImgSmallWidget = QWidget()
         self.scrollAreaImgSmallWidget.setObjectName(u"scrollAreaImgSmallWidget")
         self.scrollAreaImgSmallWidget.setGeometry(QRect(0, 0, 401, 549))
-        self.scrollAreaImgSmall.setWidget(self.scrollAreaImgSmallWidget)
-        self.labelImgSmallBack = QLabel(self.groupImgSmall)
+        self.labelImgSmallBack = QLabel(self.scrollAreaImgSmallWidget)
         self.labelImgSmallBack.setObjectName(u"labelImgSmallBack")
-        self.labelImgSmallBack.setGeometry(QRect(10, 20, 401, 551))
+        self.labelImgSmallBack.setGeometry(QRect(-1, -1, 401, 551))
         sizePolicy3.setHeightForWidth(self.labelImgSmallBack.sizePolicy().hasHeightForWidth())
         self.labelImgSmallBack.setSizePolicy(sizePolicy3)
         self.labelImgSmallBack.setFrameShape(QFrame.StyledPanel)
         self.labelImgSmallBack.setAlignment(Qt.AlignCenter)
+        self.scrollAreaImgSmall.setWidget(self.scrollAreaImgSmallWidget)
 
         self.retranslateUi(Form)
 
