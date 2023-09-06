@@ -43,7 +43,6 @@ class GroupListImg:
                         first = False
         self.groupImgSmall.showImg(count)
         self.groupMessage.successMessage(f"读取文件夹完成，发现 {count} 张图片")
-        self.groupMessage.normalMessage("点击拖动预览，使用滚轮缩放")
 
     def listImgTreeCurrentItemChanged(self):
         item = self.parent.listImgTree.currentItem()

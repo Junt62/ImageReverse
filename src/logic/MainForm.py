@@ -74,7 +74,7 @@ class MainForm(QMainWindow, Ui_Form):
         self.groupImgSmall = GroupImgSmall(self)
         self.groupMessage = GroupMessage(self)
         self.groupMessage.successMessage("软件初始化完成，可以开始操作")
-
+        
         self.scrollAreaImgBig.mousePressEvent = self.groupImgBig.mousePressEvent
         self.scrollAreaImgBig.mouseReleaseEvent = self.groupImgBig.mouseReleaseEvent
         self.scrollAreaImgBig.mouseMoveEvent = self.groupImgBig.mouseMoveEvent

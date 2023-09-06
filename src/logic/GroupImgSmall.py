@@ -51,7 +51,7 @@ class GroupImgSmall:
                 label = QLabel(str(i), self.parent.scrollAreaImgSmallWidget)
                 label.setGeometry(col * 100 - 1, row * 100 - 1, 101, 101)
                 label.setFrameShape(QFrame.StyledPanel)
-                # print(i, label.parent())
+                print(i, label.parent())
                 item = self.parent.listImgTree.currentItem()
                 if item:
                     img = QImage(item.text(1) + "\\" + item.text(0))

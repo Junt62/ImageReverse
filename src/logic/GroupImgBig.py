@@ -1,9 +1,7 @@
 import os
 from PIL import Image, ImageDraw
-from PySide6.QtCore import Qt, QPoint, QSize
+from PySide6.QtCore import Qt, QPoint
 from PySide6.QtGui import QPixmap, QImage, QWheelEvent
-
-from logic.GroupMessage import GroupMessage
 
 
 class GroupImgBig:
@@ -48,17 +46,19 @@ class GroupImgBig:
             ".bmp",
         ):
             self.parent.pixmap = QPixmap(item)
-            # 更新pixmap时使用之前的缩放比例
+
+            # 刷新pixmap时使用之前的缩放比例
             scaledPixmap = self.parent.pixmap.scaled(
                 self.parent.pixmap.width() * self.parent.pixmapScale,
                 self.parent.pixmap.height() * self.parent.pixmapScale,
             )
-            # 设置pixmap
             self.parent.labelImgBigShow.setPixmap(scaledPixmap)
+
             # 设置label的大小
             pixmapWidth = self.parent.pixmap.width()
             pixmapHeight = self.parent.pixmap.height()
             self.parent.labelImgBigShow.setFixedSize(pixmapWidth * 4, pixmapHeight * 4)
+
             # 设置label的位置
             pos = QPoint(
                 -(pixmapWidth * 2 - self.parent.scrollAreaImgBig.width() / 2),
@@ -87,7 +87,6 @@ class GroupImgBig:
             self.parent.labelOffset = (
                 self.parent.labelOffset + event.pos() - self.dragOffset
             )
-            print(self.parent.labelOffset)
 
             self.dragOffset = event.pos()
 

@@ -414,8 +414,34 @@
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
+     <widget class="QLabel" name="labelImgBigText">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>251</width>
+        <height>251</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text">
+       <string>点击拖动图片，使用滚轮缩放</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignBottom|Qt::AlignRight|Qt::AlignTrailing</set>
+      </property>
+      <property name="margin">
+       <number>2</number>
+      </property>
+     </widget>
      <zorder>labelImgBigBack</zorder>
      <zorder>labelImgBigShow</zorder>
+     <zorder>labelImgBigText</zorder>
     </widget>
    </widget>
   </widget>
