@@ -1,5 +1,6 @@
 import os, shutil
 from PIL import Image
+from contextlib import contextmanager
 
 
 class GroupProgress:

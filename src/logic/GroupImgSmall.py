@@ -9,7 +9,7 @@ class GroupImgSmall:
         self.parent = parent
         self.generateBackground()
 
-    def generateBackground(self, height=576):
+    def generateBackground(self, height=766):
         width = self.parent.labelImgSmallBack.width()
         image = Image.new("RGB", (width, height), "white")
         draw = ImageDraw.Draw(image)
