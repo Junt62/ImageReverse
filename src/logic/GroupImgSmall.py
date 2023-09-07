@@ -44,9 +44,9 @@ class GroupImgSmall:
 
         # 设置画布长度
         height = (quantity // 6 + 1) * 95
-        if height <= 576:
-            self.parent.scrollAreaImgSmallWidget.setFixedHeight(574)
-            self.generateBackground(574)
+        if height <= 766:
+            self.parent.scrollAreaImgSmallWidget.setFixedHeight(764)
+            self.generateBackground(766)
         else:
             self.parent.scrollAreaImgSmallWidget.setFixedHeight(height - 2)
             self.generateBackground(height)
