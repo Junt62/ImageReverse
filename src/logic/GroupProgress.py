@@ -1,7 +1,7 @@
-from contextlib import contextmanager
-import os
-import shutil
+import os, shutil, datetime
 from PIL import Image
+from contextlib import contextmanager
+from PySide6.QtWidgets import QLabel, QFrame, QPushButton, QWidget
 
 
 class GroupProgress:
@@ -10,6 +10,8 @@ class GroupProgress:
         self.parent.btnReadImg.clicked.connect(self.btnReadImgClicked)
         self.parent.btnChangeStructure.clicked.connect(self.btnChangeStructureClicked)
         self.parent.btnImgReverse.clicked.connect(self.btnImgReverseClicked)
+        # self.button = QPushButton("init", self.parent.scrollAreaImgSmallWidget)
+        # self.button.setGeometry(50, 50, 100, 30)
 
     def btnReadImgClicked(self):
         if not self.parent.inputImgPath.text():
@@ -46,6 +48,13 @@ class GroupProgress:
             image.save(self.parent.fillFolder + "\\" + value + ".png")
 
     def btnImgReverseClicked(self):
+        # time = datetime.datetime.now().strftime("%H:%M:%S")
+        # button = QPushButton(f"{time}", self.parent.scrollAreaImgSmallWidget)
+        # button.setGeometry(50, 100, 100, 30)
+        # for child in self.parent.scrollAreaImgSmallWidget.findChildren(QWidget):
+        #     print(
+        #         f"text:{child.text()}, parent:{child.parent().objectName()}, x:{child.x()}, y:{child.y()}"
+        #     )
         if not self.parent.inputImgPath.text():
             self.parent.groupMessage.errorMessage("未设置素材路径")
             return

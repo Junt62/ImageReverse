@@ -9,12 +9,7 @@ from logic.GroupImgSmall import GroupImgSmall
 from logic.GroupProgress import GroupProgress
 from resources.ImageReverse_ui import Ui_Form
 from PIL import Image
-
-
-class LabelImgBig:
-    def __init__(self, parent):
-        self.parent = parent
-        self.parent
+from PySide6.QtWidgets import QLabel, QFrame, QVBoxLayout, QWidget
 
 
 class MainForm(QMainWindow, Ui_Form):
