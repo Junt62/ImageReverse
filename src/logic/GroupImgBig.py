@@ -9,14 +9,17 @@ class GroupImgBig:
         self.parent = parent
         self.generateBackground()
         self.dragOffset = QPoint()
-        self.parent.labelOffset = QPoint(0, 0)
+        self.parent.labelOffset = QPoint()
         self.parent.pixmapScale = 1
         self.parent.scrollAreaImgBig.setCursor(Qt.SizeAllCursor)
+        self.parent.scrollAreaImgBig.mousePressEvent = self.mousePressEvent
+        self.parent.scrollAreaImgBig.mouseReleaseEvent = self.mouseReleaseEvent
+        self.parent.scrollAreaImgBig.mouseMoveEvent = self.mouseMoveEvent
+        self.parent.scrollAreaImgBig.wheelEvent = self.wheelEvent
 
     def generateBackground(self):
-        target = self.parent.labelImgBigBack
-        imageWidth = target.width()
-        imageHeight = target.height()
+        imageWidth = self.parent.labelImgBigBack.width()
+        imageHeight = self.parent.labelImgBigBack.height()
         cellSize = 10
         image = Image.new("RGB", (imageWidth, imageHeight), "white")
         draw = ImageDraw.Draw(image)
@@ -35,7 +38,7 @@ class GroupImgBig:
             image.width * 3,
             QImage.Format_RGB888,
         )
-        target.setPixmap(QPixmap.fromImage(qtImage))
+        self.parent.labelImgBigBack.setPixmap(QPixmap.fromImage(qtImage))
 
     def showImg(self, item: str):
         if os.path.splitext(item)[-1].lower() in (

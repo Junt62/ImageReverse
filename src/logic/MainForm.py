@@ -67,18 +67,13 @@ class MainForm(QMainWindow, Ui_Form):
     def __init__(self, parent=None):
         super(MainForm, self).__init__(parent)
         self.setupUi(self)
-        self.groupPath = GroupPath(self)
-        self.groupProgress = GroupProgress(self)
-        self.groupListimg = GroupListImg(self)
-        self.groupImgBig = GroupImgBig(self)
-        self.groupImgSmall = GroupImgSmall(self)
         self.groupMessage = GroupMessage(self)
+        self.groupPath = GroupPath(self)
+        self.groupImgSmall = GroupImgSmall(self)
+        self.groupImgBig = GroupImgBig(self)
+        self.groupListImg = GroupListImg(self)
+        self.groupProgress = GroupProgress(self)
         self.groupMessage.successMessage("软件初始化完成，可以开始操作")
-        
-        self.scrollAreaImgBig.mousePressEvent = self.groupImgBig.mousePressEvent
-        self.scrollAreaImgBig.mouseReleaseEvent = self.groupImgBig.mouseReleaseEvent
-        self.scrollAreaImgBig.mouseMoveEvent = self.groupImgBig.mouseMoveEvent
-        self.scrollAreaImgBig.wheelEvent = self.groupImgBig.wheelEvent
 
         self.tempFolder = os.path.join(self.inputSavePath.text(), "temp")
         self.fillFolder = os.path.join(self.inputSavePath.text(), "fill")

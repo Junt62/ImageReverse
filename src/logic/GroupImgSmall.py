@@ -1,27 +1,29 @@
 from logic.GroupMessage import GroupMessage
 from PySide6.QtCore import Qt, QPoint
 from PySide6.QtGui import QPixmap, QImage
-from PySide6.QtWidgets import QApplication, QLabel, QFrame
-import sys
+from PySide6.QtWidgets import (
+    QApplication,
+    QLabel,
+    QFrame,
+    QVBoxLayout,
+    QGridLayout,
+    QWidget,
+)
 from PIL import Image, ImageDraw
 
 
 class GroupImgSmall:
     def __init__(self, parent):
         self.parent = parent
-        self.groupMessage = GroupMessage(self.parent)
-        self.generateBackground(551)
-        # self.showImg(12)
+        self.generateBackground()
 
-    def generateBackground(self, height):
-        target = self.parent.labelImgSmallBack
-        imageWidth = 401
-        imageHeight = height
+    def generateBackground(self, height=576):
+        width = self.parent.labelImgSmallBack.width()
         cellSize = 10
-        image = Image.new("RGB", (imageWidth, imageHeight), "white")
+        image = Image.new("RGB", (width, height), "white")
         draw = ImageDraw.Draw(image)
-        for x in range(0, imageWidth, cellSize):
-            for y in range(0, imageHeight, cellSize):
+        for x in range(0, width, cellSize):
+            for y in range(0, height, cellSize):
                 if (x // cellSize) % 2 == (y // cellSize) % 2:
                     draw.rectangle([x, y, x + cellSize, y + cellSize], fill="white")
                 else:
@@ -35,36 +37,40 @@ class GroupImgSmall:
             image.width * 3,
             QImage.Format_RGB888,
         )
-        target.setFixedSize(imageWidth, imageHeight)
-        target.setPixmap(QPixmap.fromImage(qtImage))
+        self.parent.labelImgSmallBack.setFixedSize(width, height)
+        self.parent.labelImgSmallBack.setPixmap(QPixmap.fromImage(qtImage))
 
     def generateMatrix(self, quantity):
-        if quantity != 0:
-            rows = quantity // 4 + 1
-        else:
-            rows = 0
+        # 冗余处理：0张图片时，不继续执行下面的代码
+        if quantity == 0:
+            return
+
+        # 获取图片列表
+        listImgTree = []
+        for i in range(self.parent.listImgTree.topLevelItemCount()):
+            listImgTree.append(self.parent.listImgTree.topLevelItem(i))
+
+        # 生成画布格子，并展示预览图
         labels = {}
         i = 0
-        for row in range(rows):
-            for col in range(4):
-                i += 1
-                label = QLabel(str(i), self.parent.scrollAreaImgSmallWidget)
-                label.setGeometry(col * 100 - 1, row * 100 - 1, 101, 101)
+        for row in range(quantity // 8 + 1):
+            for col in range(8):
+                label = QLabel(self.parent.scrollAreaImgSmallWidget)
+                label.setGeometry(col * 63 - 1, row * 63 - 1, 64, 64)
                 label.setFrameShape(QFrame.StyledPanel)
-                print(i, label.parent())
-                item = self.parent.listImgTree.currentItem()
-                if item:
-                    img = QImage(item.text(1) + "\\" + item.text(0))
-                    pixmap = QPixmap.fromImage(img)
-                    label.setPixmap(pixmap)
+
+                # self.grid55.addWidget(label)
+                if i < len(listImgTree):
+                    img = QImage(listImgTree[i].text(1) + "\\" + listImgTree[i].text(0))
+                    label.setPixmap(QPixmap.fromImage(img))
                 labels[(col, row)] = label
-        a = self.parent.scrollAreaImgSmallWidget.findChildren(QLabel)
-        # for child in a:
-        #     print(child.text())
-        height = (rows) * 100
-        if height <= 551:
-            self.parent.scrollAreaImgSmallWidget.setFixedHeight(549)
-            self.generateBackground(551)
+                i += 1
+
+        # 设置画布的长度
+        height = (quantity // 8 + 1) * 63
+        if height <= 576:
+            self.parent.scrollAreaImgSmallWidget.setFixedHeight(574)
+            self.generateBackground()
         else:
             self.parent.scrollAreaImgSmallWidget.setFixedHeight(height - 2)
             self.generateBackground(height)

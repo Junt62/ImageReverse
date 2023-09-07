@@ -1,17 +1,10 @@
 import os
 from PySide6.QtWidgets import QTreeWidgetItem
-from logic.GroupImgBig import GroupImgBig
-from logic.GroupImgSmall import GroupImgSmall
-from logic.GroupMessage import GroupMessage
-from PySide6.QtWidgets import QApplication, QLabel, QMainWindow, QVBoxLayout, QWidget
 
 
 class GroupListImg:
     def __init__(self, parent):
         self.parent = parent
-        self.groupMessage = GroupMessage(self.parent)
-        self.groupImgBig = GroupImgBig(self.parent)
-        self.groupImgSmall = GroupImgSmall(self.parent)
         self.parent.listImgTree.currentItemChanged.connect(
             self.listImgTreeCurrentItemChanged
         )
@@ -41,10 +34,10 @@ class GroupListImg:
                     if first:
                         self.parent.listImgTree.setCurrentItem(item)
                         first = False
-        self.groupImgSmall.showImg(count)
-        self.groupMessage.successMessage(f"读取文件夹完成，发现 {count} 张图片")
+        self.parent.groupImgSmall.showImg(count)
+        self.parent.groupMessage.successMessage(f"读取文件夹完成，发现 {count} 张图片")
 
     def listImgTreeCurrentItemChanged(self):
         item = self.parent.listImgTree.currentItem()
         if item:
-            self.groupImgBig.showImg(item.text(1) + "\\" + item.text(0))
+            self.parent.groupImgBig.showImg(item.text(1) + "\\" + item.text(0))
