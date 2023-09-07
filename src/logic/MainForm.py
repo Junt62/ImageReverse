@@ -1,4 +1,3 @@
-from datetime import datetime
 import os, re, time, shutil, threading
 from PySide6.QtWidgets import QMainWindow, QFileDialog
 from logic.GroupListImg import GroupListImg
@@ -9,7 +8,6 @@ from logic.GroupImgSmall import GroupImgSmall
 from logic.GroupProgress import GroupProgress
 from resources.ImageReverse_ui import Ui_Form
 from PIL import Image
-from PySide6.QtWidgets import QLabel, QFrame, QVBoxLayout, QWidget
 
 
 class MainForm(QMainWindow, Ui_Form):

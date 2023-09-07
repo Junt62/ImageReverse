@@ -10,19 +10,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1097</width>
+    <width>1164</width>
     <height>600</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>1097</width>
+    <width>1164</width>
     <height>600</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>1097</width>
+    <width>1164</width>
     <height>600</height>
    </size>
   </property>
@@ -430,7 +430,7 @@
        </sizepolicy>
       </property>
       <property name="text">
-       <string>点击拖动图片，使用滚轮缩放</string>
+       <string>点击拖动图片，使用滚轮缩放(100%)</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignBottom|Qt::AlignRight|Qt::AlignTrailing</set>
@@ -489,7 +489,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     <rect>
      <x>557</x>
      <y>0</y>
-     <width>535</width>
+     <width>602</width>
      <height>596</height>
     </rect>
    </property>
@@ -501,7 +501,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <rect>
       <x>6</x>
       <y>14</y>
-      <width>523</width>
+      <width>589</width>
       <height>576</height>
      </rect>
     </property>
@@ -522,22 +522,16 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>505</width>
+       <width>570</width>
        <height>574</height>
       </rect>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>512</width>
-       <height>16777215</height>
-      </size>
      </property>
      <widget class="QLabel" name="labelImgSmallBack">
       <property name="geometry">
        <rect>
         <x>-1</x>
         <y>-1</y>
-        <width>505</width>
+        <width>571</width>
         <height>576</height>
        </rect>
       </property>
@@ -553,9 +547,21 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="text">
        <string/>
       </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
+     </widget>
+     <widget class="QWidget" name="gridLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>-1</x>
+        <y>-1</y>
+        <width>571</width>
+        <height>576</height>
+       </rect>
       </property>
+      <layout class="QGridLayout" name="scrollAreaImgSmallGrid">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+      </layout>
      </widget>
     </widget>
    </widget>

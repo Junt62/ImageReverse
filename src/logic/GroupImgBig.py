@@ -10,7 +10,7 @@ class GroupImgBig:
         self.generateBackground()
         self.dragOffset = QPoint()
         self.parent.labelOffset = QPoint()
-        self.parent.pixmapScale = 1
+        self.parent.pixmapScale = 100
         self.parent.scrollAreaImgBig.setCursor(Qt.SizeAllCursor)
         self.parent.scrollAreaImgBig.mousePressEvent = self.mousePressEvent
         self.parent.scrollAreaImgBig.mouseReleaseEvent = self.mouseReleaseEvent
@@ -50,12 +50,17 @@ class GroupImgBig:
         ):
             self.parent.pixmap = QPixmap(item)
 
-            # 刷新pixmap时使用之前的缩放比例
+            # 设置pixmap的缩放
             scaledPixmap = self.parent.pixmap.scaled(
-                self.parent.pixmap.width() * self.parent.pixmapScale,
-                self.parent.pixmap.height() * self.parent.pixmapScale,
+                self.parent.pixmap.width() * (self.parent.pixmapScale / 100),
+                self.parent.pixmap.height() * (self.parent.pixmapScale / 100),
+                Qt.KeepAspectRatio,
+                Qt.SmoothTransformation,
             )
             self.parent.labelImgBigShow.setPixmap(scaledPixmap)
+            self.parent.labelImgBigText.setText(
+                f"点击拖动图片，使用滚轮缩放({self.parent.pixmapScale}%)"
+            )
 
             # 设置label的大小
             pixmapWidth = self.parent.pixmap.width()
@@ -97,14 +102,24 @@ class GroupImgBig:
         if not self.parent.labelImgBigShow.pixmap().isNull():
             angle = event.angleDelta().y()
             if angle > 0:
-                self.parent.pixmapScale += 0.1
-            else:
-                if self.parent.pixmapScale < 0.2:
-                    pass
+                if self.parent.pixmapScale >= 1600:
+                    self.parent.pixmapScale = 1600
                 else:
-                    self.parent.pixmapScale -= 0.1
+                    self.parent.pixmapScale += 5
+            else:
+                if self.parent.pixmapScale < 50:
+                    self.parent.pixmapScale -= 1
+                    if self.parent.pixmapScale <= 1:
+                        self.parent.pixmapScale = 1
+                else:
+                    self.parent.pixmapScale -= 5
             scaledPixmap = self.parent.pixmap.scaled(
-                self.parent.pixmap.width() * self.parent.pixmapScale,
-                self.parent.pixmap.height() * self.parent.pixmapScale,
+                self.parent.pixmap.width() * (self.parent.pixmapScale / 100),
+                self.parent.pixmap.height() * (self.parent.pixmapScale / 100),
+                Qt.KeepAspectRatio,
+                Qt.SmoothTransformation,
             )
             self.parent.labelImgBigShow.setPixmap(scaledPixmap)
+            self.parent.labelImgBigText.setText(
+                f"点击拖动图片，使用滚轮缩放({self.parent.pixmapScale}%)"
+            )

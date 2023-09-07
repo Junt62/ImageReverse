@@ -15,10 +15,10 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QAbstractScrollArea, QApplication, QFrame, QGroupBox,
-    QHeaderView, QLabel, QLineEdit, QProgressBar,
-    QPushButton, QScrollArea, QSizePolicy, QTextEdit,
-    QTreeWidget, QTreeWidgetItem, QWidget)
+from PySide6.QtWidgets import (QAbstractScrollArea, QApplication, QFrame, QGridLayout,
+    QGroupBox, QHeaderView, QLabel, QLineEdit,
+    QProgressBar, QPushButton, QScrollArea, QSizePolicy,
+    QTextEdit, QTreeWidget, QTreeWidgetItem, QWidget)
 import resources.resources_rc
 
 class Ui_Form(object):
@@ -26,9 +26,9 @@ class Ui_Form(object):
         if not Form.objectName():
             Form.setObjectName(u"Form")
         Form.setEnabled(True)
-        Form.resize(1097, 600)
-        Form.setMinimumSize(QSize(1097, 600))
-        Form.setMaximumSize(QSize(1097, 600))
+        Form.resize(1164, 600)
+        Form.setMinimumSize(QSize(1164, 600))
+        Form.setMaximumSize(QSize(1164, 600))
         icon = QIcon()
         icon.addFile(u":/picture/icon.ico", QSize(), QIcon.Normal, QIcon.Off)
         Form.setWindowIcon(icon)
@@ -161,25 +161,30 @@ class Ui_Form(object):
         self.inputMessage.setTextInteractionFlags(Qt.NoTextInteraction)
         self.groupImgSmall = QGroupBox(Form)
         self.groupImgSmall.setObjectName(u"groupImgSmall")
-        self.groupImgSmall.setGeometry(QRect(557, 0, 535, 596))
+        self.groupImgSmall.setGeometry(QRect(557, 0, 602, 596))
         self.scrollAreaImgSmall = QScrollArea(self.groupImgSmall)
         self.scrollAreaImgSmall.setObjectName(u"scrollAreaImgSmall")
-        self.scrollAreaImgSmall.setGeometry(QRect(6, 14, 523, 576))
+        self.scrollAreaImgSmall.setGeometry(QRect(6, 14, 589, 576))
         self.scrollAreaImgSmall.setFrameShadow(QFrame.Plain)
         self.scrollAreaImgSmall.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
         self.scrollAreaImgSmall.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.scrollAreaImgSmall.setWidgetResizable(False)
         self.scrollAreaImgSmallWidget = QWidget()
         self.scrollAreaImgSmallWidget.setObjectName(u"scrollAreaImgSmallWidget")
-        self.scrollAreaImgSmallWidget.setGeometry(QRect(0, 0, 505, 574))
-        self.scrollAreaImgSmallWidget.setMaximumSize(QSize(512, 16777215))
+        self.scrollAreaImgSmallWidget.setGeometry(QRect(0, 0, 570, 574))
         self.labelImgSmallBack = QLabel(self.scrollAreaImgSmallWidget)
         self.labelImgSmallBack.setObjectName(u"labelImgSmallBack")
-        self.labelImgSmallBack.setGeometry(QRect(-1, -1, 505, 576))
+        self.labelImgSmallBack.setGeometry(QRect(-1, -1, 571, 576))
         sizePolicy3.setHeightForWidth(self.labelImgSmallBack.sizePolicy().hasHeightForWidth())
         self.labelImgSmallBack.setSizePolicy(sizePolicy3)
         self.labelImgSmallBack.setFrameShape(QFrame.StyledPanel)
-        self.labelImgSmallBack.setAlignment(Qt.AlignCenter)
+        self.gridLayoutWidget = QWidget(self.scrollAreaImgSmallWidget)
+        self.gridLayoutWidget.setObjectName(u"gridLayoutWidget")
+        self.gridLayoutWidget.setGeometry(QRect(-1, -1, 571, 576))
+        self.scrollAreaImgSmallGrid = QGridLayout(self.gridLayoutWidget)
+        self.scrollAreaImgSmallGrid.setSpacing(0)
+        self.scrollAreaImgSmallGrid.setObjectName(u"scrollAreaImgSmallGrid")
+        self.scrollAreaImgSmallGrid.setContentsMargins(0, 0, 0, 0)
         self.scrollAreaImgSmall.setWidget(self.scrollAreaImgSmallWidget)
 
         self.retranslateUi(Form)
@@ -211,7 +216,7 @@ class Ui_Form(object):
         self.groupImgBig.setTitle(QCoreApplication.translate("Form", u"\u5927\u56fe\u9884\u89c8", None))
         self.labelImgBigShow.setText("")
         self.labelImgBigBack.setText("")
-        self.labelImgBigText.setText(QCoreApplication.translate("Form", u"\u70b9\u51fb\u62d6\u52a8\u56fe\u7247\uff0c\u4f7f\u7528\u6eda\u8f6e\u7f29\u653e", None))
+        self.labelImgBigText.setText(QCoreApplication.translate("Form", u"\u70b9\u51fb\u62d6\u52a8\u56fe\u7247\uff0c\u4f7f\u7528\u6eda\u8f6e\u7f29\u653e(100%)", None))
         self.groupMessage.setTitle(QCoreApplication.translate("Form", u"\u6d88\u606f\u8f93\u51fa", None))
         self.inputMessage.setHtml(QCoreApplication.translate("Form", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
