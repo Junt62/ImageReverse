@@ -102,7 +102,9 @@ class GroupImgBig:
         if not self.parent.labelImgBigShow.pixmap().isNull():
             angle = event.angleDelta().y()
             if angle > 0:
-                if self.parent.pixmapScale >= 1600:
+                if self.parent.pixmapScale < 50:
+                    self.parent.pixmapScale += 1
+                elif self.parent.pixmapScale >= 1600:
                     self.parent.pixmapScale = 1600
                 else:
                     self.parent.pixmapScale += 5

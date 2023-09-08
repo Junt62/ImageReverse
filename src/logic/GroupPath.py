@@ -12,31 +12,51 @@ class GroupPath:
         )
 
     def inputImgPathEditingFinished(self):
-        path = self.parent.inputImgPath.text()
-        path = path.replace("/", "\\")
-        folder = path.split("\\")[-1]
-        if path != "":
-            if os.path.isdir(path):
-                self.parent.inputSavePath.setText(path + "\\处理后")
-                self.parent.groupMessage.normalMessage(f"设置素材文件夹： {folder}")
-                self.parent.groupMessage.normalMessage(f"设置保存文件夹： {folder}" + "\\处理后")
-            else:
-                self.parent.groupMessage.errorMessage(f"错误的路径： {path}")
+        self.formatPath()
 
     def btnImgPathClicked(self):
-        path = QFileDialog.getExistingDirectory(self.parent, "选择路径", os.getcwd())
+        if self.parent.inputImgPath.text():
+            previous = self.parent.inputImgPath.text()
+        else:
+            previous = os.getcwd()
+        path = QFileDialog.getExistingDirectory(self.parent, "选择路径", previous)
         if path:
-            path = path.replace("/", "\\")
-            folder = path.split("\\")[-1]
             self.parent.inputImgPath.setText(path)
-            self.parent.inputSavePath.setText(path + "\\处理后")
-            self.parent.groupMessage.normalMessage(f"设置素材文件夹： {folder}")
-            self.parent.groupMessage.normalMessage(f"设置保存文件夹： {folder}" + "\\处理后")
+            self.formatPath()
 
     def btnSavePathClicked(self):
-        path = QFileDialog.getExistingDirectory(self.parent, "选择路径", os.getcwd())
+        if self.parent.inputImgPath.text():
+            previous = self.parent.inputImgPath.text()
+        else:
+            previous = os.getcwd()
+        path = QFileDialog.getExistingDirectory(self.parent, "选择路径", previous)
+        if path:
+            self.parent.inputImgPath.setText(path)
+            self.formatPath()
+
+    def formatPath(self):
+        path = self.parent.inputImgPath.text()
         if path:
             path = path.replace("/", "\\")
-            folder = path.split("\\")[-1]
-            self.parent.inputSavePath.setText(path)
-            self.parent.groupMessage.normalMessage(f"设置保存文件夹： {folder}")
+            while path[-1] == "\\":
+                path = path[:-1]
+                if path == "":
+                    break
+        self.parent.inputImgPath.setText(path)
+
+        if not path:
+            self.parent.groupMessage.errorMessage("未设置素材路径")
+            return
+
+        if not os.path.isdir(path):
+            self.parent.groupMessage.errorMessage(f"错误的路径： {path}")
+            return
+
+        if len(path) == 2 and path[1] == ":":
+            self.parent.groupMessage.errorMessage("不可设置盘符为素材路径")
+            return
+
+        folder = path.split("\\")[-1]
+        self.parent.inputSavePath.setText(path + "\\处理后")
+        self.parent.groupMessage.normalMessage(f"设置素材文件夹： {folder}")
+        self.parent.groupMessage.normalMessage(f"设置保存文件夹： {folder}" + "\\处理后")

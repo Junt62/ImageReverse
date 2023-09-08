@@ -140,7 +140,7 @@ class Ui_Form(object):
         self.labelImgSmallBack.setFrameShape(QFrame.StyledPanel)
         self.gridLayoutWidget = QWidget(self.scrollAreaImgSmallWidget)
         self.gridLayoutWidget.setObjectName(u"gridLayoutWidget")
-        self.gridLayoutWidget.setGeometry(QRect(-1, -1, 571, 766))
+        self.gridLayoutWidget.setGeometry(QRect(0, 0, 569, 764))
         self.scrollAreaImgSmallGrid = QGridLayout(self.gridLayoutWidget)
         self.scrollAreaImgSmallGrid.setSpacing(0)
         self.scrollAreaImgSmallGrid.setObjectName(u"scrollAreaImgSmallGrid")
