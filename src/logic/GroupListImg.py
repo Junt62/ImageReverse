@@ -29,7 +29,9 @@ class GroupListImg:
                     ".bmp",
                 ):
                     count += 1
-                    item = QTreeWidgetItem(self.parent.listImgTree, [name, current])
+                    item = QTreeWidgetItem(
+                        self.parent.listImgTree, [str(count), name, current]
+                    )
                     self.parent.listImgTree.addTopLevelItem(item)
                     if first:
                         self.parent.listImgTree.setCurrentItem(item)
@@ -40,4 +42,4 @@ class GroupListImg:
     def listImgTreeCurrentItemChanged(self):
         item = self.parent.listImgTree.currentItem()
         if item:
-            self.parent.groupImgBig.showImg(item.text(1) + "\\" + item.text(0))
+            self.parent.groupImgBig.showImg(item.text(2) + "\\" + item.text(1))

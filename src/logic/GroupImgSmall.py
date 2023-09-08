@@ -84,7 +84,7 @@ class GroupImgSmall:
                     )
 
                     # 创建并设置pixmap属性
-                    img = QImage(listImgTree[i].text(1) + "\\" + listImgTree[i].text(0))
+                    img = QImage(listImgTree[i].text(2) + "\\" + listImgTree[i].text(1))
                     pixmap = QPixmap.fromImage(img)
                     pixmap = pixmap.scaled(
                         label.width(),
