@@ -1,15 +1,16 @@
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QPixmap, QImage, QPainter
-from PySide6.QtWidgets import QLabel, QFrame
+from PySide6.QtWidgets import QLabel, QFrame, QWidget, QSizePolicy
 from PIL import Image, ImageDraw
 
 
 class GroupImgSmall:
     def __init__(self, parent):
         self.parent = parent
+        self.backgroundHeight = 693
         self.generateBackground()
 
-    def generateBackground(self, height=766):
+    def generateBackground(self, height=693):
         width = self.parent.labelImgSmallBack.width()
         image = Image.new("RGB", (width, height), "white")
         draw = ImageDraw.Draw(image)
@@ -29,10 +30,8 @@ class GroupImgSmall:
             image.width * 3,
             QImage.Format_RGB888,
         )
-        pixmap = QPixmap.fromImage(qtImage)
-        # painter = QPainter(pixmap)
         self.parent.labelImgSmallBack.setFixedSize(width, height)
-        self.parent.labelImgSmallBack.setPixmap(pixmap)
+        self.parent.labelImgSmallBack.setPixmap(QPixmap.fromImage(qtImage))
 
     def generateMatrix(self, quantity):
         # 冗余处理：0张图片时，不继续执行下面的代码
@@ -42,7 +41,6 @@ class GroupImgSmall:
             quantity = quantity // 6
         else:
             quantity = quantity // 6 + 1
-        print(quantity)
 
         # 获取图片列表
         listImgTree = []
@@ -51,20 +49,22 @@ class GroupImgSmall:
 
         # 设置画布长度
         height = (quantity) * 95
-        if height <= 766:
-            self.parent.scrollAreaImgSmallWidget.setFixedHeight(764)
-            self.generateBackground(766)
-        else:
-            self.parent.scrollAreaImgSmallWidget.setFixedHeight(height - 2)
+        if height >= self.backgroundHeight:
             self.generateBackground(height)
-        self.parent.gridLayoutWidget.setFixedHeight(height)
+        else:
+            self.generateBackground(self.backgroundHeight)
+        self.parent.scrollAreaImgSmallWidget.setFixedHeight(height)
+        self.parent.scrollAreaImgSmallWidget.setFixedWidth(
+            self.parent.labelImgSmallBack.width()
+        )
 
         # 清空grid中已有的QLabel组件
-        for i in reversed(range(self.parent.scrollAreaImgSmallGrid.count())):
-            item = self.parent.scrollAreaImgSmallGrid.itemAt(i)
+        for i in reversed(range(self.parent.scrollAreaImgSmallWidgetLayout.count())):
+            item = self.parent.scrollAreaImgSmallWidgetLayout.itemAt(i)
+            if item.widget().objectName() == "labelImgSmallBack":
+                continue
             if item.widget() is not None:
                 item.widget().deleteLater()
-            self.parent.scrollAreaImgSmallGrid.removeItem(item)
 
         # 生成画布格子，并展示预览图
         labels = {}
@@ -73,12 +73,15 @@ class GroupImgSmall:
             for col in range(6):
                 if i < len(listImgTree):
                     # 创建并设置QLabel属性
-                    label = QLabel(f"{row},{col}", self.parent.scrollAreaImgSmallWidget)
-                    label.setGeometry(col * 95 - 1, row * 95 - 1, 96, 96)
+                    label = QLabel()
+                    label.setMinimumSize(96, 96)
                     label.setMaximumSize(96, 96)
-                    label.setFrameShape(QFrame.StyledPanel)
+                    label.setFrameShape(QFrame.Panel)
+                    label.setFrameShadow(QFrame.Raised)
                     label.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
-                    self.parent.scrollAreaImgSmallGrid.addWidget(label, row, col)
+                    self.parent.scrollAreaImgSmallWidgetLayout.addWidget(
+                        label, row, col
+                    )
 
                     # 创建并设置pixmap属性
                     img = QImage(listImgTree[i].text(1) + "\\" + listImgTree[i].text(0))

@@ -6,11 +6,11 @@ from logic.GroupPath import GroupPath
 from logic.GroupImgBig import GroupImgBig
 from logic.GroupImgSmall import GroupImgSmall
 from logic.GroupProgress import GroupProgress
-from resources.ImageReverse_ui import Ui_Form
+from resources.ImageReverse_ui import Ui_MainForm
 from PIL import Image
 
 
-class MainForm(QMainWindow, Ui_Form):
+class MainForm(QMainWindow, Ui_MainForm):
     thread = threading.Thread()
     renameMapping = {
         "待机": "01站立",
