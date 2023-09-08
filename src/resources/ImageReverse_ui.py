@@ -215,10 +215,6 @@ class Ui_MainForm(object):
         self.btnImgReverse.setText(QCoreApplication.translate("MainForm", u"\u7ffb\u8f6c\u56fe\u7247", None))
         self.groupMessage.setTitle(QCoreApplication.translate("MainForm", u"\u6d88\u606f\u8f93\u51fa", None))
         self.groupListImg.setTitle(QCoreApplication.translate("MainForm", u"\u56fe\u7247\u5217\u8868", None))
-        ___qtreewidgetitem = self.listImgTree.headerItem()
-        ___qtreewidgetitem.setText(2, QCoreApplication.translate("MainForm", u"\u8def\u5f84", None));
-        ___qtreewidgetitem.setText(1, QCoreApplication.translate("MainForm", u"\u540d\u79f0", None));
-        ___qtreewidgetitem.setText(0, QCoreApplication.translate("MainForm", u"\u5e8f\u53f7", None));
         self.groupImgSmall.setTitle(QCoreApplication.translate("MainForm", u"\u5c0f\u56fe\u9884\u89c8", None))
         self.groupImgBig.setTitle(QCoreApplication.translate("MainForm", u"\u5927\u56fe\u9884\u89c8", None))
         self.labelImgBigText.setText(QCoreApplication.translate("MainForm", u"\u70b9\u51fb\u62d6\u52a8\u56fe\u7247\uff0c\u4f7f\u7528\u6eda\u8f6e\u7f29\u653e(100%)", None))
