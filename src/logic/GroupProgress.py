@@ -6,6 +6,7 @@ from contextlib import contextmanager
 class GroupProgress:
     def __init__(self, parent):
         self.parent = parent
+        self.parent.btnReadImg.setEnabled(False)
         self.parent.btnReadImg.clicked.connect(self.btnReadImgClicked)
         self.parent.btnChangeStructure.clicked.connect(self.btnChangeStructureClicked)
         self.parent.btnImgReverse.clicked.connect(self.btnImgReverseClicked)

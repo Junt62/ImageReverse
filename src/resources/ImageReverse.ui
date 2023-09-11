@@ -6,6 +6,14 @@
   <property name="enabled">
    <bool>true</bool>
   </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1280</width>
+    <height>720</height>
+   </rect>
+  </property>
   <property name="minimumSize">
    <size>
     <width>1280</width>
@@ -65,23 +73,47 @@
     <property name="spacing">
      <number>1</number>
     </property>
-    <item row="0" column="0">
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="inputSavePath"/>
+    </item>
+    <item row="0" column="1">
      <widget class="QLineEdit" name="inputImgPath"/>
     </item>
-    <item row="1" column="1">
-     <widget class="QPushButton" name="btnSavePath">
+    <item row="0" column="0">
+     <widget class="QPushButton" name="btnImgPath">
+      <property name="minimumSize">
+       <size>
+        <width>68</width>
+        <height>23</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>68</width>
+        <height>23</height>
+       </size>
+      </property>
       <property name="text">
-       <string>保存位置</string>
+       <string>素材路径</string>
       </property>
      </widget>
     </item>
     <item row="1" column="0">
-     <widget class="QLineEdit" name="inputSavePath"/>
-    </item>
-    <item row="0" column="1">
-     <widget class="QPushButton" name="btnImgPath">
+     <widget class="QPushButton" name="btnSavePath">
+      <property name="minimumSize">
+       <size>
+        <width>68</width>
+        <height>23</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>68</width>
+        <height>23</height>
+       </size>
+      </property>
       <property name="text">
-       <string>素材路径</string>
+       <string>保存位置</string>
       </property>
      </widget>
     </item>
@@ -93,7 +125,7 @@
      <x>4</x>
      <y>67</y>
      <width>263</width>
-     <height>116</height>
+     <height>71</height>
     </rect>
    </property>
    <property name="title">
@@ -117,27 +149,78 @@
     </property>
     <item row="0" column="0">
      <widget class="QPushButton" name="btnReadImg">
+      <property name="minimumSize">
+       <size>
+        <width>80</width>
+        <height>24</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>80</width>
+        <height>24</height>
+       </size>
+      </property>
       <property name="text">
        <string>读取图片</string>
       </property>
      </widget>
     </item>
-    <item row="1" column="0">
+    <item row="0" column="1">
      <widget class="QPushButton" name="btnChangeStructure">
+      <property name="minimumSize">
+       <size>
+        <width>80</width>
+        <height>24</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>80</width>
+        <height>24</height>
+       </size>
+      </property>
       <property name="text">
        <string>调整结构</string>
       </property>
      </widget>
     </item>
-    <item row="2" column="0">
+    <item row="0" column="2">
      <widget class="QPushButton" name="btnImgReverse">
+      <property name="minimumSize">
+       <size>
+        <width>80</width>
+        <height>24</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>80</width>
+        <height>24</height>
+       </size>
+      </property>
       <property name="text">
        <string>翻转图片</string>
       </property>
      </widget>
     </item>
-    <item row="3" column="0">
+    <item row="3" column="0" colspan="3">
      <widget class="QProgressBar" name="barProgress">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>16</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>16</height>
+       </size>
+      </property>
+      <property name="value">
+       <number>0</number>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
@@ -149,9 +232,9 @@
    <property name="geometry">
     <rect>
      <x>4</x>
-     <y>183</y>
+     <y>138</y>
      <width>263</width>
-     <height>292</height>
+     <height>336</height>
     </rect>
    </property>
    <property name="title">
@@ -247,7 +330,7 @@
     </size>
    </property>
    <property name="title">
-    <string>小图预览</string>
+    <string>图片列表</string>
    </property>
    <layout class="QGridLayout" name="groupImgSmallLayout">
     <property name="leftMargin">
@@ -292,6 +375,14 @@
        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
       </property>
       <widget class="QWidget" name="scrollAreaImgSmallWidget">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>576</width>
+         <height>693</height>
+        </rect>
+       </property>
        <layout class="QGridLayout" name="scrollAreaImgSmallWidgetLayout">
         <property name="leftMargin">
          <number>0</number>
@@ -349,7 +440,7 @@
     </size>
    </property>
    <property name="title">
-    <string>大图预览</string>
+    <string>图片预览</string>
    </property>
    <layout class="QGridLayout" name="groupImgBigLayout" columnstretch="3">
     <property name="sizeConstraint">
@@ -383,6 +474,9 @@
         <width>386</width>
         <height>386</height>
        </size>
+      </property>
+      <property name="cursor" stdset="0">
+       <cursorShape>SizeAllCursor</cursorShape>
       </property>
       <property name="verticalScrollBarPolicy">
        <enum>Qt::ScrollBarAlwaysOff</enum>

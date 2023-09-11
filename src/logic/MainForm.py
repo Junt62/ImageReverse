@@ -9,6 +9,8 @@ from logic.GroupProgress import GroupProgress
 from resources.ImageReverse_ui import Ui_MainForm
 from PIL import Image
 
+from util.ZiJun import ZiJun
+
 
 class MainForm(QMainWindow, Ui_MainForm):
     thread = threading.Thread()

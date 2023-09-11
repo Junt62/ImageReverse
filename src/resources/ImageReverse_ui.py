@@ -27,6 +27,7 @@ class Ui_MainForm(object):
         if not MainForm.objectName():
             MainForm.setObjectName(u"MainForm")
         MainForm.setEnabled(True)
+        MainForm.resize(1280, 720)
         MainForm.setMinimumSize(QSize(1280, 720))
         MainForm.setMaximumSize(QSize(1280, 720))
         icon = QIcon()
@@ -41,57 +42,70 @@ class Ui_MainForm(object):
         self.groupPathLayout.setSpacing(1)
         self.groupPathLayout.setObjectName(u"groupPathLayout")
         self.groupPathLayout.setContentsMargins(3, 0, 3, 3)
-        self.inputImgPath = QLineEdit(self.groupPath)
-        self.inputImgPath.setObjectName(u"inputImgPath")
-
-        self.groupPathLayout.addWidget(self.inputImgPath, 0, 0, 1, 1)
-
-        self.btnSavePath = QPushButton(self.groupPath)
-        self.btnSavePath.setObjectName(u"btnSavePath")
-
-        self.groupPathLayout.addWidget(self.btnSavePath, 1, 1, 1, 1)
-
         self.inputSavePath = QLineEdit(self.groupPath)
         self.inputSavePath.setObjectName(u"inputSavePath")
 
-        self.groupPathLayout.addWidget(self.inputSavePath, 1, 0, 1, 1)
+        self.groupPathLayout.addWidget(self.inputSavePath, 1, 1, 1, 1)
+
+        self.inputImgPath = QLineEdit(self.groupPath)
+        self.inputImgPath.setObjectName(u"inputImgPath")
+
+        self.groupPathLayout.addWidget(self.inputImgPath, 0, 1, 1, 1)
 
         self.btnImgPath = QPushButton(self.groupPath)
         self.btnImgPath.setObjectName(u"btnImgPath")
+        self.btnImgPath.setMinimumSize(QSize(68, 23))
+        self.btnImgPath.setMaximumSize(QSize(68, 23))
 
-        self.groupPathLayout.addWidget(self.btnImgPath, 0, 1, 1, 1)
+        self.groupPathLayout.addWidget(self.btnImgPath, 0, 0, 1, 1)
+
+        self.btnSavePath = QPushButton(self.groupPath)
+        self.btnSavePath.setObjectName(u"btnSavePath")
+        self.btnSavePath.setMinimumSize(QSize(68, 23))
+        self.btnSavePath.setMaximumSize(QSize(68, 23))
+
+        self.groupPathLayout.addWidget(self.btnSavePath, 1, 0, 1, 1)
 
         self.groupProgress = QGroupBox(MainForm)
         self.groupProgress.setObjectName(u"groupProgress")
-        self.groupProgress.setGeometry(QRect(4, 67, 263, 116))
+        self.groupProgress.setGeometry(QRect(4, 67, 263, 71))
         self.groupProgressLayout = QGridLayout(self.groupProgress)
         self.groupProgressLayout.setSpacing(1)
         self.groupProgressLayout.setObjectName(u"groupProgressLayout")
         self.groupProgressLayout.setContentsMargins(3, 0, 3, 3)
         self.btnReadImg = QPushButton(self.groupProgress)
         self.btnReadImg.setObjectName(u"btnReadImg")
+        self.btnReadImg.setMinimumSize(QSize(80, 24))
+        self.btnReadImg.setMaximumSize(QSize(80, 24))
 
         self.groupProgressLayout.addWidget(self.btnReadImg, 0, 0, 1, 1)
 
         self.btnChangeStructure = QPushButton(self.groupProgress)
         self.btnChangeStructure.setObjectName(u"btnChangeStructure")
+        self.btnChangeStructure.setMinimumSize(QSize(80, 24))
+        self.btnChangeStructure.setMaximumSize(QSize(80, 24))
 
-        self.groupProgressLayout.addWidget(self.btnChangeStructure, 1, 0, 1, 1)
+        self.groupProgressLayout.addWidget(self.btnChangeStructure, 0, 1, 1, 1)
 
         self.btnImgReverse = QPushButton(self.groupProgress)
         self.btnImgReverse.setObjectName(u"btnImgReverse")
+        self.btnImgReverse.setMinimumSize(QSize(80, 24))
+        self.btnImgReverse.setMaximumSize(QSize(80, 24))
 
-        self.groupProgressLayout.addWidget(self.btnImgReverse, 2, 0, 1, 1)
+        self.groupProgressLayout.addWidget(self.btnImgReverse, 0, 2, 1, 1)
 
         self.barProgress = QProgressBar(self.groupProgress)
         self.barProgress.setObjectName(u"barProgress")
+        self.barProgress.setMinimumSize(QSize(0, 16))
+        self.barProgress.setMaximumSize(QSize(16777215, 16))
+        self.barProgress.setValue(0)
         self.barProgress.setAlignment(Qt.AlignCenter)
 
-        self.groupProgressLayout.addWidget(self.barProgress, 3, 0, 1, 1)
+        self.groupProgressLayout.addWidget(self.barProgress, 3, 0, 1, 3)
 
         self.groupMessage = QGroupBox(MainForm)
         self.groupMessage.setObjectName(u"groupMessage")
-        self.groupMessage.setGeometry(QRect(4, 183, 263, 292))
+        self.groupMessage.setGeometry(QRect(4, 138, 263, 336))
         self.groupMessageLayout = QGridLayout(self.groupMessage)
         self.groupMessageLayout.setSpacing(1)
         self.groupMessageLayout.setObjectName(u"groupMessageLayout")
@@ -136,6 +150,7 @@ class Ui_MainForm(object):
         self.scrollAreaImgSmall.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
         self.scrollAreaImgSmallWidget = QWidget()
         self.scrollAreaImgSmallWidget.setObjectName(u"scrollAreaImgSmallWidget")
+        self.scrollAreaImgSmallWidget.setGeometry(QRect(0, 0, 576, 693))
         self.scrollAreaImgSmallWidgetLayout = QGridLayout(self.scrollAreaImgSmallWidget)
         self.scrollAreaImgSmallWidgetLayout.setSpacing(0)
         self.scrollAreaImgSmallWidgetLayout.setObjectName(u"scrollAreaImgSmallWidgetLayout")
@@ -166,6 +181,7 @@ class Ui_MainForm(object):
         self.scrollAreaImgBig.setObjectName(u"scrollAreaImgBig")
         self.scrollAreaImgBig.setMinimumSize(QSize(386, 386))
         self.scrollAreaImgBig.setMaximumSize(QSize(386, 386))
+        self.scrollAreaImgBig.viewport().setProperty("cursor", QCursor(Qt.SizeAllCursor))
         self.scrollAreaImgBig.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.scrollAreaImgBig.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.scrollAreaImgBig.setWidgetResizable(True)
@@ -207,16 +223,16 @@ class Ui_MainForm(object):
     def retranslateUi(self, MainForm):
         MainForm.setWindowTitle(QCoreApplication.translate("MainForm", u"\u5e8f\u5217\u5e27\u56fe\u7247\u7ffb\u8f6c\u5de5\u5177", None))
         self.groupPath.setTitle(QCoreApplication.translate("MainForm", u"\u8def\u5f84\u9009\u62e9", None))
-        self.btnSavePath.setText(QCoreApplication.translate("MainForm", u"\u4fdd\u5b58\u4f4d\u7f6e", None))
         self.btnImgPath.setText(QCoreApplication.translate("MainForm", u"\u7d20\u6750\u8def\u5f84", None))
+        self.btnSavePath.setText(QCoreApplication.translate("MainForm", u"\u4fdd\u5b58\u4f4d\u7f6e", None))
         self.groupProgress.setTitle(QCoreApplication.translate("MainForm", u"\u56fe\u7247\u64cd\u4f5c", None))
         self.btnReadImg.setText(QCoreApplication.translate("MainForm", u"\u8bfb\u53d6\u56fe\u7247", None))
         self.btnChangeStructure.setText(QCoreApplication.translate("MainForm", u"\u8c03\u6574\u7ed3\u6784", None))
         self.btnImgReverse.setText(QCoreApplication.translate("MainForm", u"\u7ffb\u8f6c\u56fe\u7247", None))
         self.groupMessage.setTitle(QCoreApplication.translate("MainForm", u"\u6d88\u606f\u8f93\u51fa", None))
         self.groupListImg.setTitle(QCoreApplication.translate("MainForm", u"\u56fe\u7247\u5217\u8868", None))
-        self.groupImgSmall.setTitle(QCoreApplication.translate("MainForm", u"\u5c0f\u56fe\u9884\u89c8", None))
-        self.groupImgBig.setTitle(QCoreApplication.translate("MainForm", u"\u5927\u56fe\u9884\u89c8", None))
+        self.groupImgSmall.setTitle(QCoreApplication.translate("MainForm", u"\u56fe\u7247\u5217\u8868", None))
+        self.groupImgBig.setTitle(QCoreApplication.translate("MainForm", u"\u56fe\u7247\u9884\u89c8", None))
         self.labelImgBigText.setText(QCoreApplication.translate("MainForm", u"\u70b9\u51fb\u62d6\u52a8\u56fe\u7247\uff0c\u4f7f\u7528\u6eda\u8f6e\u7f29\u653e(100%)", None))
     # retranslateUi
 

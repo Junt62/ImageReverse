@@ -1,78 +1,51 @@
 import os
-from PIL import Image, ImageDraw
 from PySide6.QtCore import Qt, QPoint
 from PySide6.QtGui import QPixmap, QImage, QWheelEvent
+
+from util.ZiJun import ZiJun
 
 
 class GroupImgBig:
     def __init__(self, parent):
         self.parent = parent
-        self.generateBackground()
+        self.backgroundWidth = self.parent.labelImgBigBack.width()
+        self.backgroundHeight = self.parent.labelImgBigBack.height()
+        pixmap = ZiJun.generateGrid(self.backgroundWidth, self.backgroundHeight)
+        self.parent.labelImgBigBack.setPixmap(pixmap)
         self.dragOffset = QPoint()
         self.parent.labelOffset = QPoint()
         self.parent.pixmapScale = 100
-        self.parent.scrollAreaImgBig.setCursor(Qt.SizeAllCursor)
         self.parent.scrollAreaImgBig.mousePressEvent = self.mousePressEvent
         self.parent.scrollAreaImgBig.mouseReleaseEvent = self.mouseReleaseEvent
         self.parent.scrollAreaImgBig.mouseMoveEvent = self.mouseMoveEvent
         self.parent.scrollAreaImgBig.wheelEvent = self.wheelEvent
 
-    def generateBackground(self):
-        imageWidth = self.parent.labelImgBigBack.width()
-        imageHeight = self.parent.labelImgBigBack.height()
-        cellSize = 10
-        image = Image.new("RGB", (imageWidth, imageHeight), "white")
-        draw = ImageDraw.Draw(image)
-        for x in range(0, imageWidth, cellSize):
-            for y in range(0, imageHeight, cellSize):
-                if (x // cellSize) % 2 == (y // cellSize) % 2:
-                    draw.rectangle([x, y, x + cellSize, y + cellSize], fill="white")
-                else:
-                    draw.rectangle(
-                        [x, y, x + cellSize, y + cellSize], fill=(204, 204, 204)
-                    )
-        qtImage = QImage(
-            image.tobytes(),
-            image.width,
-            image.height,
-            image.width * 3,
-            QImage.Format_RGB888,
+    def showImg(self, path: str):
+        self.parent.pixmap = QPixmap(path)
+
+        # 设置pixmap的缩放
+        scaledPixmap = self.parent.pixmap.scaled(
+            self.parent.pixmap.width() * (self.parent.pixmapScale / 100),
+            self.parent.pixmap.height() * (self.parent.pixmapScale / 100),
+            Qt.KeepAspectRatio,
+            Qt.SmoothTransformation,
         )
-        self.parent.labelImgBigBack.setPixmap(QPixmap.fromImage(qtImage))
+        self.parent.labelImgBigShow.setPixmap(scaledPixmap)
+        self.parent.labelImgBigText.setText(
+            f"点击拖动图片，使用滚轮缩放({self.parent.pixmapScale}%)"
+        )
 
-    def showImg(self, item: str):
-        if os.path.splitext(item)[-1].lower() in (
-            ".jpg",
-            ".jpeg",
-            ".png",
-            ".gif",
-            ".bmp",
-        ):
-            self.parent.pixmap = QPixmap(item)
+        # 设置label的大小
+        pixmapWidth = self.parent.pixmap.width()
+        pixmapHeight = self.parent.pixmap.height()
+        self.parent.labelImgBigShow.setFixedSize(pixmapWidth * 4, pixmapHeight * 4)
 
-            # 设置pixmap的缩放
-            scaledPixmap = self.parent.pixmap.scaled(
-                self.parent.pixmap.width() * (self.parent.pixmapScale / 100),
-                self.parent.pixmap.height() * (self.parent.pixmapScale / 100),
-                Qt.KeepAspectRatio,
-                Qt.SmoothTransformation,
-            )
-            self.parent.labelImgBigShow.setPixmap(scaledPixmap)
-            self.parent.labelImgBigText.setText(
-                f"点击拖动图片，使用滚轮缩放({self.parent.pixmapScale}%)"
-            )
-
-            # 设置label的大小
-            pixmapWidth = self.parent.pixmap.width()
-            pixmapHeight = self.parent.pixmap.height()
-            self.parent.labelImgBigShow.setFixedSize(pixmapWidth * 4, pixmapHeight * 4)
-
-            # 设置label的位置
-            pos = QPoint(
-                -(pixmapWidth * 2 - self.parent.scrollAreaImgBig.width() / 2),
-                -(pixmapHeight * 2 - self.parent.scrollAreaImgBig.height() / 2),
-            )
-            self.parent.labelImgBigShow.move(pos + self.parent.labelOffset)
+        # 设置label的位置
+        pos = QPoint(
+            -(pixmapWidth * 2 - self.parent.scrollAreaImgBig.width() / 2),
+            -(pixmapHeight * 2 - self.parent.scrollAreaImgBig.height() / 2),
+        )
+        self.parent.labelImgBigShow.move(pos + self.parent.labelOffset)
 
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton:

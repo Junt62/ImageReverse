@@ -1,6 +1,8 @@
 import os
 from PySide6.QtWidgets import QFileDialog
 
+from util.ZiJun import ZiJun
+
 
 class GroupPath:
     def __init__(self, parent):
@@ -58,5 +60,6 @@ class GroupPath:
 
         folder = path.split("\\")[-1]
         self.parent.inputSavePath.setText(path + "\\处理后")
+        self.parent.groupListImg.loadImage()
         self.parent.groupMessage.normalMessage(f"设置素材文件夹： {folder}")
         self.parent.groupMessage.normalMessage(f"设置保存文件夹： {folder}" + "\\处理后")

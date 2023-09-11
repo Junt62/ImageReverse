@@ -32,3 +32,6 @@ class GroupMessage:
         self.parent.inputMessage.verticalScrollBar().setValue(
             self.parent.inputMessage.verticalScrollBar().maximum()
         )
+
+    def updateProgressBar(self, number: int):
+        self.parent.barProgress.setValue(number)
