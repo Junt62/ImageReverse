@@ -3,8 +3,8 @@ from PySide6.QtWidgets import QMainWindow, QFileDialog
 from logic.GroupListImg import GroupListImg
 from logic.GroupMessage import GroupMessage
 from logic.GroupPath import GroupPath
-from logic.GroupImgBig import GroupImgBig
-from logic.GroupImgSmall import GroupImgSmall
+from logic.GroupImgPreview import GroupImgPreview
+from logic.GroupImgTable import GroupImgTable
 from logic.GroupProgress import GroupProgress
 from resources.ImageReverse_ui import Ui_MainForm
 from PIL import Image
@@ -64,8 +64,8 @@ class MainForm(QMainWindow, Ui_MainForm):
         self.setupUi(self)
         self.groupMessage = GroupMessage(self)
         self.groupPath = GroupPath(self)
-        self.groupImgSmall = GroupImgSmall(self)
-        self.groupImgBig = GroupImgBig(self)
+        self.groupImgTable = GroupImgTable(self)
+        self.groupImgPreview = GroupImgPreview(self)
         self.groupListImg = GroupListImg(self)
         self.groupProgress = GroupProgress(self)
         self.groupMessage.successMessage("软件初始化完成，可以开始操作")

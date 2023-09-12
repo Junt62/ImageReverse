@@ -42,7 +42,7 @@ class GroupListImg:
             self.parent.listImgTree.setColumnWidth(i, maxWidth[i] + 10)
 
         # 调用函数显示小预览图
-        self.parent.groupImgSmall.showImg(len(image))
+        self.parent.groupImgTable.showImg(len(image))
         self.parent.groupMessage.successMessage(f"读取文件夹完成，发现 {len(image)} 张图片")
 
     def generateTable(self):
@@ -61,4 +61,6 @@ class GroupListImg:
     def listImgTreeCurrentItemChanged(self):
         item = self.parent.listImgTree.currentItem()
         if item:
-            self.parent.groupImgBig.showImg(os.path.join(item.text(2), item.text(1)))
+            self.parent.groupImgPreview.showImg(
+                os.path.join(item.text(2), item.text(1))
+            )

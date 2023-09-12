@@ -6,13 +6,12 @@ from contextlib import contextmanager
 class GroupProgress:
     def __init__(self, parent):
         self.parent = parent
-        self.parent.btnReadImg.setEnabled(False)
-        self.parent.btnReadImg.clicked.connect(self.btnReadImgClicked)
+        self.parent.btnReadPosition.clicked.connect(self.btnReadPositionClicked)
         self.parent.btnChangeStructure.clicked.connect(self.btnChangeStructureClicked)
         self.parent.btnImgReverse.clicked.connect(self.btnImgReverseClicked)
         self.isShowImg = False
 
-    def btnReadImgClicked(self):
+    def btnReadPositionClicked(self):
         if not self.parent.inputImgPath.text():
             self.parent.groupMessage.errorMessage("未设置素材路径")
             return

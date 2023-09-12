@@ -123,15 +123,15 @@
    <property name="geometry">
     <rect>
      <x>4</x>
-     <y>67</y>
+     <y>134</y>
      <width>263</width>
-     <height>71</height>
+     <height>133</height>
     </rect>
    </property>
    <property name="title">
     <string>图片操作</string>
    </property>
-   <layout class="QGridLayout" name="groupProgressLayout">
+   <layout class="QGridLayout" name="gridLayout">
     <property name="leftMargin">
      <number>3</number>
     </property>
@@ -145,66 +145,16 @@
      <number>3</number>
     </property>
     <property name="spacing">
-     <number>1</number>
+     <number>2</number>
     </property>
-    <item row="0" column="0">
-     <widget class="QPushButton" name="btnReadImg">
-      <property name="minimumSize">
-       <size>
-        <width>80</width>
-        <height>24</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>80</width>
-        <height>24</height>
-       </size>
-      </property>
+    <item row="0" column="3">
+     <widget class="QLineEdit" name="inputPositionOldY">
       <property name="text">
-       <string>读取图片</string>
+       <string>Y=0</string>
       </property>
      </widget>
     </item>
-    <item row="0" column="1">
-     <widget class="QPushButton" name="btnChangeStructure">
-      <property name="minimumSize">
-       <size>
-        <width>80</width>
-        <height>24</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>80</width>
-        <height>24</height>
-       </size>
-      </property>
-      <property name="text">
-       <string>调整结构</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="2">
-     <widget class="QPushButton" name="btnImgReverse">
-      <property name="minimumSize">
-       <size>
-        <width>80</width>
-        <height>24</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>80</width>
-        <height>24</height>
-       </size>
-      </property>
-      <property name="text">
-       <string>翻转图片</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="0" colspan="3">
+    <item row="7" column="0" colspan="6">
      <widget class="QProgressBar" name="barProgress">
       <property name="minimumSize">
        <size>
@@ -226,15 +176,92 @@
       </property>
      </widget>
     </item>
+    <item row="1" column="2">
+     <widget class="QLineEdit" name="inputPositionNewX">
+      <property name="text">
+       <string>X=0</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="3">
+     <widget class="QLineEdit" name="inputPositionNewY">
+      <property name="text">
+       <string>Y=0</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0" colspan="2">
+     <widget class="QLabel" name="labelPositionOld">
+      <property name="text">
+       <string> 原始坐标:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <widget class="QLineEdit" name="inputPositionOldX">
+      <property name="text">
+       <string>X=0</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QPushButton" name="btnReadPosition">
+      <property name="text">
+       <string>读取坐标</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="2">
+     <widget class="QPushButton" name="btnApplyPosition">
+      <property name="text">
+       <string>应用坐标</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="3">
+     <widget class="QPushButton" name="btnAutoAlignment">
+      <property name="text">
+       <string>一键对齐</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="0">
+     <widget class="QPushButton" name="btnOpenFolder">
+      <property name="text">
+       <string>打开文件</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="2">
+     <widget class="QPushButton" name="btnChangeStructure">
+      <property name="text">
+       <string>调整结构</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="3">
+     <widget class="QPushButton" name="btnImgReverse">
+      <property name="text">
+       <string>翻转图片</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="labelPositionNew">
+      <property name="text">
+       <string> 新的坐标:</string>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
   <widget class="QGroupBox" name="groupMessage">
    <property name="geometry">
     <rect>
      <x>4</x>
-     <y>138</y>
+     <y>267</y>
      <width>263</width>
-     <height>336</height>
+     <height>208</height>
     </rect>
    </property>
    <property name="title">
@@ -251,10 +278,10 @@
      <number>4</number>
     </property>
     <property name="bottomMargin">
-     <number>4</number>
+     <number>5</number>
     </property>
     <property name="spacing">
-     <number>1</number>
+     <number>0</number>
     </property>
     <item row="0" column="0">
      <widget class="QTextEdit" name="inputMessage">
@@ -304,11 +331,16 @@
       <property name="sizeAdjustPolicy">
        <enum>QAbstractScrollArea::AdjustToContentsOnFirstShow</enum>
       </property>
+      <column>
+       <property name="text">
+        <string notr="true">1</string>
+       </property>
+      </column>
      </widget>
     </item>
    </layout>
   </widget>
-  <widget class="QGroupBox" name="groupImgSmall">
+  <widget class="QGroupBox" name="groupImgTable">
    <property name="geometry">
     <rect>
      <x>671</x>
@@ -349,7 +381,7 @@
      <number>1</number>
     </property>
     <item row="0" column="0">
-     <widget class="QScrollArea" name="scrollAreaImgSmall">
+     <widget class="QScrollArea" name="scrollImgTable">
       <property name="minimumSize">
        <size>
         <width>595</width>
@@ -374,7 +406,7 @@
       <property name="alignment">
        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
       </property>
-      <widget class="QWidget" name="scrollAreaImgSmallWidget">
+      <widget class="QWidget" name="scrollImgTableWidget">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -400,7 +432,7 @@
          <number>0</number>
         </property>
         <item row="0" column="0">
-         <widget class="QLabel" name="labelImgSmallBack">
+         <widget class="QLabel" name="labelImgTableBack">
           <property name="frameShape">
            <enum>QFrame::Panel</enum>
           </property>
@@ -418,7 +450,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QGroupBox" name="groupImgBig">
+  <widget class="QGroupBox" name="groupImgPreview">
    <property name="geometry">
     <rect>
      <x>271</x>
@@ -462,7 +494,7 @@
      <number>1</number>
     </property>
     <item row="0" column="0">
-     <widget class="QScrollArea" name="scrollAreaImgBig">
+     <widget class="QScrollArea" name="scrollImgPreview">
       <property name="minimumSize">
        <size>
         <width>386</width>
@@ -487,7 +519,7 @@
       <property name="widgetResizable">
        <bool>true</bool>
       </property>
-      <widget class="QWidget" name="scrollAreaImgBigWidget">
+      <widget class="QWidget" name="scrollImgPreviewWidget">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -513,7 +545,7 @@
          <number>0</number>
         </property>
         <item row="0" column="0">
-         <widget class="QLabel" name="labelImgBigText">
+         <widget class="QLabel" name="labelImgPreviewText">
           <property name="text">
            <string>点击拖动图片，使用滚轮缩放(100%)</string>
           </property>
@@ -523,7 +555,7 @@
          </widget>
         </item>
        </layout>
-       <widget class="QLabel" name="labelImgBigShow">
+       <widget class="QLabel" name="labelImgPreviewShow">
         <property name="geometry">
          <rect>
           <x>0</x>
@@ -536,7 +568,7 @@
          <set>Qt::AlignCenter</set>
         </property>
        </widget>
-       <widget class="QLabel" name="labelImgBigBack">
+       <widget class="QLabel" name="labelImgPreviewBack">
         <property name="geometry">
          <rect>
           <x>0</x>
@@ -549,10 +581,88 @@
          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
         </property>
        </widget>
-       <zorder>labelImgBigBack</zorder>
-       <zorder>labelImgBigShow</zorder>
-       <zorder>labelImgBigText</zorder>
+       <zorder>labelImgPreviewBack</zorder>
+       <zorder>labelImgPreviewShow</zorder>
+       <zorder>labelImgPreviewText</zorder>
       </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QGroupBox" name="groupDisplaySetting">
+   <property name="geometry">
+    <rect>
+     <x>4</x>
+     <y>67</y>
+     <width>263</width>
+     <height>68</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>图片操作</string>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_2">
+    <property name="leftMargin">
+     <number>3</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>3</number>
+    </property>
+    <property name="bottomMargin">
+     <number>3</number>
+    </property>
+    <property name="spacing">
+     <number>2</number>
+    </property>
+    <item row="2" column="0">
+     <widget class="QLabel" name="labelDisplayColor">
+      <property name="text">
+       <string> 背景颜色:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1" colspan="2">
+     <widget class="QLineEdit" name="inputDisplayType">
+      <property name="text">
+       <string>原图显示</string>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="3">
+     <widget class="QPushButton" name="btnChangeDisplayType">
+      <property name="text">
+       <string>切换显示</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1" colspan="2">
+     <widget class="QLineEdit" name="inputDisplayColor">
+      <property name="text">
+       <string>透明</string>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="labelDisplayType">
+      <property name="text">
+       <string> 显示方式:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="3">
+     <widget class="QPushButton" name="btnChangeDisplayColor">
+      <property name="text">
+       <string>切换颜色</string>
+      </property>
      </widget>
     </item>
    </layout>

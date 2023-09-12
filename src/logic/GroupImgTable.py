@@ -6,14 +6,14 @@ from PySide6.QtWidgets import QLabel, QFrame, QWidget, QSizePolicy
 from util.ZiJun import ZiJun
 
 
-class GroupImgSmall:
+class GroupImgTable:
     def __init__(self, parent):
         self.parent = parent
-        self.backWidth = self.parent.labelImgSmallBack.width()
+        self.backWidth = self.parent.labelImgTableBack.width()
         self.backHeight = 693
         pixmap = ZiJun.generateGrid(self.backWidth, self.backHeight)
-        self.parent.labelImgSmallBack.setFixedSize(self.backWidth, self.backHeight)
-        self.parent.labelImgSmallBack.setPixmap(pixmap)
+        self.parent.labelImgTableBack.setFixedSize(self.backWidth, self.backHeight)
+        self.parent.labelImgTableBack.setPixmap(pixmap)
 
     def generateMatrix(self, quantity):
         # 冗余处理：0张图片时，不继续执行下面的代码
@@ -33,21 +33,21 @@ class GroupImgSmall:
         height = (quantity) * 72
         if height >= self.backHeight:
             pixmap = ZiJun.generateGrid(self.backWidth, height)
-            self.parent.labelImgSmallBack.setFixedSize(self.backWidth, height)
-            self.parent.labelImgSmallBack.setPixmap(pixmap)
+            self.parent.labelImgTableBack.setFixedSize(self.backWidth, height)
+            self.parent.labelImgTableBack.setPixmap(pixmap)
         else:
             pixmap = ZiJun.generateGrid(self.backWidth, self.backHeight)
-            self.parent.labelImgSmallBack.setFixedSize(self.backWidth, self.backHeight)
-            self.parent.labelImgSmallBack.setPixmap(pixmap)
-        self.parent.scrollAreaImgSmallWidget.setFixedHeight(height)
-        self.parent.scrollAreaImgSmallWidget.setFixedWidth(
-            self.parent.labelImgSmallBack.width()
+            self.parent.labelImgTableBack.setFixedSize(self.backWidth, self.backHeight)
+            self.parent.labelImgTableBack.setPixmap(pixmap)
+        self.parent.scrollImgTableWidget.setFixedHeight(height)
+        self.parent.scrollImgTableWidget.setFixedWidth(
+            self.parent.labelImgTableBack.width()
         )
 
         # 清空grid中已有的QLabel组件
-        for i in reversed(range(self.parent.scrollAreaImgSmallWidgetLayout.count())):
-            item = self.parent.scrollAreaImgSmallWidgetLayout.itemAt(i)
-            if item.widget().objectName() == "labelImgSmallBack":
+        for i in reversed(range(self.parent.scrollImgTableWidget.count())):
+            item = self.parent.scrollImgTableWidget.itemAt(i)
+            if item.widget().objectName() == "labelImgTableBack":
                 continue
             if item.widget() is not None:
                 item.widget().deleteLater()
@@ -65,9 +65,7 @@ class GroupImgSmall:
                     label.setFrameShape(QFrame.Panel)
                     label.setFrameShadow(QFrame.Raised)
                     label.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
-                    self.parent.scrollAreaImgSmallWidgetLayout.addWidget(
-                        label, row, col
-                    )
+                    self.parent.scrollImgTableWidgetLayout.addWidget(label, row, col)
 
                     # 创建并设置pixmap属性
                     img = QImage(os.path.join(imgItem[i].text(2), imgItem[i].text(1)))
