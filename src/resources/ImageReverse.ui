@@ -415,7 +415,7 @@
          <height>693</height>
         </rect>
        </property>
-       <layout class="QGridLayout" name="scrollAreaImgSmallWidgetLayout">
+       <layout class="QGridLayout" name="scrollImgTableWidgetLayout">
         <property name="leftMargin">
          <number>0</number>
         </property>
@@ -528,7 +528,7 @@
          <height>384</height>
         </rect>
        </property>
-       <layout class="QGridLayout" name="scrollAreaImgBigWidgetLayout">
+       <layout class="QGridLayout" name="scrollImgPreviewWidgetLayout">
         <property name="leftMargin">
          <number>0</number>
         </property>

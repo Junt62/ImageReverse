@@ -68,6 +68,7 @@ class MainForm(QMainWindow, Ui_MainForm):
         self.groupImgPreview = GroupImgPreview(self)
         self.groupListImg = GroupListImg(self)
         self.groupProgress = GroupProgress(self)
+
         self.groupMessage.successMessage("软件初始化完成，可以开始操作")
 
         self.tempFolder = os.path.join(self.inputSavePath.text(), "temp")

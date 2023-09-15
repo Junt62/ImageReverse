@@ -45,8 +45,8 @@ class GroupImgTable:
         )
 
         # 清空grid中已有的QLabel组件
-        for i in reversed(range(self.parent.scrollImgTableWidget.count())):
-            item = self.parent.scrollImgTableWidget.itemAt(i)
+        for i in reversed(range(self.parent.scrollImgTableWidgetLayout.count())):
+            item = self.parent.scrollImgTableWidgetLayout.itemAt(i)
             if item.widget().objectName() == "labelImgTableBack":
                 continue
             if item.widget() is not None:
