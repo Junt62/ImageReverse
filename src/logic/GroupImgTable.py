@@ -10,7 +10,7 @@ class GroupImgTable:
     def __init__(self, parent):
         self.parent = parent
         self.backWidth = self.parent.labelImgTableBack.width()
-        self.backHeight = 693
+        self.backHeight = 694
         pixmap = ZiJun.generateGrid(self.backWidth, self.backHeight)
         self.parent.labelImgTableBack.setFixedSize(self.backWidth, self.backHeight)
         self.parent.labelImgTableBack.setPixmap(pixmap)

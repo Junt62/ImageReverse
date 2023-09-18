@@ -3,26 +3,15 @@
  <author>zijun</author>
  <class>MainForm</class>
  <widget class="QWidget" name="MainForm">
-  <property name="enabled">
-   <bool>true</bool>
-  </property>
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>1280</width>
-    <height>720</height>
-   </rect>
-  </property>
   <property name="minimumSize">
    <size>
-    <width>1280</width>
+    <width>1257</width>
     <height>720</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>1280</width>
+    <width>1257</width>
     <height>720</height>
    </size>
   </property>
@@ -33,636 +22,710 @@
    <iconset>
     <normaloff>:/picture/icon.ico</normaloff>:/picture/icon.ico</iconset>
   </property>
-  <widget class="QGroupBox" name="groupPath">
+  <widget class="QWidget" name="gridLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>4</x>
+     <x>0</x>
      <y>0</y>
-     <width>663</width>
-     <height>68</height>
+     <width>1260</width>
+     <height>721</height>
     </rect>
    </property>
-   <property name="minimumSize">
-    <size>
-     <width>0</width>
-     <height>68</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>16777215</width>
-     <height>68</height>
-    </size>
-   </property>
-   <property name="title">
-    <string>路径选择</string>
-   </property>
-   <layout class="QGridLayout" name="groupPathLayout">
+   <layout class="QGridLayout" name="MainFormLayout">
     <property name="leftMargin">
-     <number>3</number>
+     <number>4</number>
     </property>
     <property name="topMargin">
      <number>0</number>
     </property>
     <property name="rightMargin">
-     <number>3</number>
+     <number>4</number>
     </property>
     <property name="bottomMargin">
-     <number>3</number>
+     <number>4</number>
     </property>
-    <property name="spacing">
-     <number>1</number>
+    <property name="horizontalSpacing">
+     <number>4</number>
     </property>
-    <item row="1" column="1">
-     <widget class="QLineEdit" name="inputSavePath"/>
-    </item>
-    <item row="0" column="1">
-     <widget class="QLineEdit" name="inputImgPath"/>
-    </item>
-    <item row="0" column="0">
-     <widget class="QPushButton" name="btnImgPath">
-      <property name="minimumSize">
-       <size>
-        <width>68</width>
-        <height>23</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>68</width>
-        <height>23</height>
-       </size>
-      </property>
-      <property name="text">
-       <string>素材路径</string>
-      </property>
-     </widget>
-    </item>
+    <property name="verticalSpacing">
+     <number>0</number>
+    </property>
     <item row="1" column="0">
-     <widget class="QPushButton" name="btnSavePath">
-      <property name="minimumSize">
-       <size>
-        <width>68</width>
-        <height>23</height>
-       </size>
-      </property>
+     <widget class="QGroupBox" name="groupDisplaySetting">
       <property name="maximumSize">
        <size>
-        <width>68</width>
-        <height>23</height>
+        <width>240</width>
+        <height>16777215</height>
        </size>
       </property>
-      <property name="text">
-       <string>保存位置</string>
+      <property name="title">
+       <string>预览设置</string>
       </property>
+      <layout class="QGridLayout" name="groupDisplaySettingLayout">
+       <property name="leftMargin">
+        <number>3</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>3</number>
+       </property>
+       <property name="bottomMargin">
+        <number>3</number>
+       </property>
+       <property name="spacing">
+        <number>2</number>
+       </property>
+       <item row="1" column="1" colspan="2">
+        <widget class="QLineEdit" name="inputDisplayType">
+         <property name="text">
+          <string>原图显示</string>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="3">
+        <widget class="QPushButton" name="btnChangeDisplayType">
+         <property name="text">
+          <string>切换显示</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="labelDisplayType">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string> 显示方式:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="labelDisplayColor">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string> 背景颜色:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1" colspan="2">
+        <widget class="QLineEdit" name="inputDisplayColor">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>透明</string>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="3">
+        <widget class="QPushButton" name="btnChangeDisplayColor">
+         <property name="text">
+          <string>切换颜色</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </item>
-   </layout>
-  </widget>
-  <widget class="QGroupBox" name="groupProgress">
-   <property name="geometry">
-    <rect>
-     <x>4</x>
-     <y>134</y>
-     <width>263</width>
-     <height>133</height>
-    </rect>
-   </property>
-   <property name="title">
-    <string>图片操作</string>
-   </property>
-   <layout class="QGridLayout" name="gridLayout">
-    <property name="leftMargin">
-     <number>3</number>
-    </property>
-    <property name="topMargin">
-     <number>0</number>
-    </property>
-    <property name="rightMargin">
-     <number>3</number>
-    </property>
-    <property name="bottomMargin">
-     <number>3</number>
-    </property>
-    <property name="spacing">
-     <number>2</number>
-    </property>
-    <item row="0" column="3">
-     <widget class="QLineEdit" name="inputPositionOldY">
-      <property name="text">
-       <string>Y=0</string>
-      </property>
-     </widget>
-    </item>
-    <item row="7" column="0" colspan="6">
-     <widget class="QProgressBar" name="barProgress">
+    <item row="0" column="0" colspan="2">
+     <widget class="QGroupBox" name="groupPath">
       <property name="minimumSize">
        <size>
         <width>0</width>
-        <height>16</height>
+        <height>68</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
         <width>16777215</width>
-        <height>16</height>
+        <height>68</height>
        </size>
       </property>
-      <property name="value">
-       <number>0</number>
+      <property name="title">
+       <string>路径选择</string>
       </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="2">
-     <widget class="QLineEdit" name="inputPositionNewX">
-      <property name="text">
-       <string>X=0</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="3">
-     <widget class="QLineEdit" name="inputPositionNewY">
-      <property name="text">
-       <string>Y=0</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="0" colspan="2">
-     <widget class="QLabel" name="labelPositionOld">
-      <property name="text">
-       <string> 原始坐标:</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="2">
-     <widget class="QLineEdit" name="inputPositionOldX">
-      <property name="text">
-       <string>X=0</string>
-      </property>
+      <layout class="QGridLayout" name="groupPathLayout">
+       <property name="leftMargin">
+        <number>3</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>3</number>
+       </property>
+       <property name="bottomMargin">
+        <number>3</number>
+       </property>
+       <property name="spacing">
+        <number>1</number>
+       </property>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="inputSavePath"/>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="inputImgPath"/>
+       </item>
+       <item row="0" column="0">
+        <widget class="QPushButton" name="btnImgPath">
+         <property name="minimumSize">
+          <size>
+           <width>68</width>
+           <height>23</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>68</width>
+           <height>23</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>素材路径</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QPushButton" name="btnSavePath">
+         <property name="minimumSize">
+          <size>
+           <width>68</width>
+           <height>23</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>68</width>
+           <height>23</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>保存位置</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </item>
     <item row="2" column="0">
-     <widget class="QPushButton" name="btnReadPosition">
-      <property name="text">
-       <string>读取坐标</string>
+     <widget class="QGroupBox" name="groupProgress">
+      <property name="maximumSize">
+       <size>
+        <width>240</width>
+        <height>16777215</height>
+       </size>
       </property>
-     </widget>
-    </item>
-    <item row="2" column="2">
-     <widget class="QPushButton" name="btnApplyPosition">
-      <property name="text">
-       <string>应用坐标</string>
+      <property name="title">
+       <string>图片操作</string>
       </property>
-     </widget>
-    </item>
-    <item row="2" column="3">
-     <widget class="QPushButton" name="btnAutoAlignment">
-      <property name="text">
-       <string>一键对齐</string>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="0">
-     <widget class="QPushButton" name="btnOpenFolder">
-      <property name="text">
-       <string>打开文件</string>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="2">
-     <widget class="QPushButton" name="btnChangeStructure">
-      <property name="text">
-       <string>调整结构</string>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="3">
-     <widget class="QPushButton" name="btnImgReverse">
-      <property name="text">
-       <string>翻转图片</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0">
-     <widget class="QLabel" name="labelPositionNew">
-      <property name="text">
-       <string> 新的坐标:</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QGroupBox" name="groupMessage">
-   <property name="geometry">
-    <rect>
-     <x>4</x>
-     <y>267</y>
-     <width>263</width>
-     <height>208</height>
-    </rect>
-   </property>
-   <property name="title">
-    <string>消息输出</string>
-   </property>
-   <layout class="QGridLayout" name="groupMessageLayout">
-    <property name="leftMargin">
-     <number>4</number>
-    </property>
-    <property name="topMargin">
-     <number>0</number>
-    </property>
-    <property name="rightMargin">
-     <number>4</number>
-    </property>
-    <property name="bottomMargin">
-     <number>5</number>
-    </property>
-    <property name="spacing">
-     <number>0</number>
-    </property>
-    <item row="0" column="0">
-     <widget class="QTextEdit" name="inputMessage">
-      <property name="readOnly">
-       <bool>true</bool>
-      </property>
-      <property name="textInteractionFlags">
-       <set>Qt::TextSelectableByMouse</set>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QGroupBox" name="groupListImg">
-   <property name="geometry">
-    <rect>
-     <x>4</x>
-     <y>474</y>
-     <width>663</width>
-     <height>242</height>
-    </rect>
-   </property>
-   <property name="title">
-    <string>图片列表</string>
-   </property>
-   <layout class="QGridLayout" name="groupListImgLayout">
-    <property name="leftMargin">
-     <number>4</number>
-    </property>
-    <property name="topMargin">
-     <number>0</number>
-    </property>
-    <property name="rightMargin">
-     <number>4</number>
-    </property>
-    <property name="bottomMargin">
-     <number>4</number>
-    </property>
-    <property name="spacing">
-     <number>1</number>
-    </property>
-    <item row="0" column="0">
-     <widget class="QTreeWidget" name="listImgTree">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="sizeAdjustPolicy">
-       <enum>QAbstractScrollArea::AdjustToContentsOnFirstShow</enum>
-      </property>
-      <column>
-       <property name="text">
-        <string notr="true">1</string>
+      <layout class="QGridLayout" name="groupProgressLayout">
+       <property name="leftMargin">
+        <number>3</number>
        </property>
-      </column>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>3</number>
+       </property>
+       <property name="bottomMargin">
+        <number>3</number>
+       </property>
+       <property name="spacing">
+        <number>2</number>
+       </property>
+       <item row="1" column="3">
+        <widget class="QLineEdit" name="inputPositionNewY">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Y=0</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QPushButton" name="btnReadPosition">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>读取坐标</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QLineEdit" name="inputPositionNewX">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>X=0</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QLineEdit" name="inputPositionOldY">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Y=0</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QPushButton" name="btnOpenFolder">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>打开文件</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0" colspan="2">
+        <widget class="QLabel" name="labelPositionOld">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string> 原始坐标:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QPushButton" name="btnApplyPosition">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>应用坐标</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="labelPositionNew">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string> 新的坐标:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="3">
+        <widget class="QPushButton" name="btnImgReverse">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>翻转图片</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="3">
+        <widget class="QPushButton" name="btnAutoAlignment">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>一键对齐</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="2">
+        <widget class="QPushButton" name="btnChangeStructure">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>调整结构</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QLineEdit" name="inputPositionOldX">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>X=0</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </item>
-   </layout>
-  </widget>
-  <widget class="QGroupBox" name="groupImgTable">
-   <property name="geometry">
-    <rect>
-     <x>671</x>
-     <y>0</y>
-     <width>605</width>
-     <height>716</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>605</width>
-     <height>0</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>605</width>
-     <height>16777215</height>
-    </size>
-   </property>
-   <property name="title">
-    <string>图片列表</string>
-   </property>
-   <layout class="QGridLayout" name="groupImgSmallLayout">
-    <property name="leftMargin">
-     <number>4</number>
-    </property>
-    <property name="topMargin">
-     <number>0</number>
-    </property>
-    <property name="rightMargin">
-     <number>4</number>
-    </property>
-    <property name="bottomMargin">
-     <number>4</number>
-    </property>
-    <property name="spacing">
-     <number>1</number>
-    </property>
-    <item row="0" column="0">
-     <widget class="QScrollArea" name="scrollImgTable">
+    <item row="0" column="2" rowspan="5">
+     <widget class="QGroupBox" name="groupImgTable">
       <property name="minimumSize">
        <size>
-        <width>595</width>
+        <width>605</width>
         <height>0</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
-        <width>595</width>
+        <width>605</width>
         <height>16777215</height>
        </size>
       </property>
-      <property name="verticalScrollBarPolicy">
-       <enum>Qt::ScrollBarAlwaysOn</enum>
+      <property name="title">
+       <string>图片列表</string>
       </property>
-      <property name="horizontalScrollBarPolicy">
-       <enum>Qt::ScrollBarAlwaysOff</enum>
-      </property>
-      <property name="widgetResizable">
-       <bool>true</bool>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-      </property>
-      <widget class="QWidget" name="scrollImgTableWidget">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>576</width>
-         <height>693</height>
-        </rect>
+      <layout class="QGridLayout" name="groupImgSmallLayout">
+       <property name="leftMargin">
+        <number>4</number>
        </property>
-       <layout class="QGridLayout" name="scrollImgTableWidgetLayout">
-        <property name="leftMargin">
-         <number>0</number>
-        </property>
-        <property name="topMargin">
-         <number>0</number>
-        </property>
-        <property name="rightMargin">
-         <number>0</number>
-        </property>
-        <property name="bottomMargin">
-         <number>0</number>
-        </property>
-        <property name="spacing">
-         <number>0</number>
-        </property>
-        <item row="0" column="0">
-         <widget class="QLabel" name="labelImgTableBack">
-          <property name="frameShape">
-           <enum>QFrame::Panel</enum>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>4</number>
+       </property>
+       <property name="bottomMargin">
+        <number>4</number>
+       </property>
+       <property name="spacing">
+        <number>1</number>
+       </property>
+       <item row="0" column="2">
+        <widget class="QScrollArea" name="scrollImgTable">
+         <property name="minimumSize">
+          <size>
+           <width>595</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>595</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="verticalScrollBarPolicy">
+          <enum>Qt::ScrollBarAlwaysOn</enum>
+         </property>
+         <property name="horizontalScrollBarPolicy">
+          <enum>Qt::ScrollBarAlwaysOff</enum>
+         </property>
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+         </property>
+         <widget class="QWidget" name="scrollImgTableWidget">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>576</width>
+            <height>693</height>
+           </rect>
           </property>
-          <property name="frameShadow">
-           <enum>QFrame::Raised</enum>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-          </property>
+          <layout class="QGridLayout" name="scrollImgTableWidgetLayout">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item row="0" column="0">
+            <widget class="QLabel" name="labelImgTableBack">
+             <property name="frameShape">
+              <enum>QFrame::Panel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </widget>
-        </item>
-       </layout>
-      </widget>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </item>
-   </layout>
-  </widget>
-  <widget class="QGroupBox" name="groupImgPreview">
-   <property name="geometry">
-    <rect>
-     <x>271</x>
-     <y>67</y>
-     <width>396</width>
-     <height>408</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>396</width>
-     <height>408</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>396</width>
-     <height>408</height>
-    </size>
-   </property>
-   <property name="title">
-    <string>图片预览</string>
-   </property>
-   <layout class="QGridLayout" name="groupImgBigLayout" columnstretch="3">
-    <property name="sizeConstraint">
-     <enum>QLayout::SetNoConstraint</enum>
-    </property>
-    <property name="leftMargin">
-     <number>4</number>
-    </property>
-    <property name="topMargin">
-     <number>0</number>
-    </property>
-    <property name="rightMargin">
-     <number>4</number>
-    </property>
-    <property name="bottomMargin">
-     <number>4</number>
-    </property>
-    <property name="spacing">
-     <number>1</number>
-    </property>
-    <item row="0" column="0">
-     <widget class="QScrollArea" name="scrollImgPreview">
+    <item row="4" column="0" colspan="2">
+     <widget class="QGroupBox" name="groupListImg">
+      <property name="title">
+       <string>图片列表</string>
+      </property>
+      <layout class="QGridLayout" name="groupListImgLayout">
+       <property name="leftMargin">
+        <number>4</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>4</number>
+       </property>
+       <property name="bottomMargin">
+        <number>4</number>
+       </property>
+       <property name="spacing">
+        <number>1</number>
+       </property>
+       <item row="0" column="0">
+        <widget class="QTreeWidget" name="listImgTree">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="sizeAdjustPolicy">
+          <enum>QAbstractScrollArea::AdjustToContentsOnFirstShow</enum>
+         </property>
+         <column>
+          <property name="text">
+           <string notr="true">1</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QGroupBox" name="groupMessage">
+      <property name="maximumSize">
+       <size>
+        <width>240</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="title">
+       <string>消息输出</string>
+      </property>
+      <layout class="QGridLayout" name="groupMessageLayout">
+       <property name="leftMargin">
+        <number>4</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>4</number>
+       </property>
+       <property name="bottomMargin">
+        <number>5</number>
+       </property>
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <item row="0" column="0">
+        <widget class="QTextEdit" name="inputMessage">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+         <property name="textInteractionFlags">
+          <set>Qt::TextSelectableByMouse</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="1" column="1" rowspan="3">
+     <widget class="QGroupBox" name="groupImgPreview">
       <property name="minimumSize">
        <size>
-        <width>386</width>
-        <height>386</height>
+        <width>396</width>
+        <height>0</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
-        <width>386</width>
-        <height>386</height>
+        <width>396</width>
+        <height>16777215</height>
        </size>
       </property>
-      <property name="cursor" stdset="0">
-       <cursorShape>SizeAllCursor</cursorShape>
+      <property name="title">
+       <string>图片预览</string>
       </property>
-      <property name="verticalScrollBarPolicy">
-       <enum>Qt::ScrollBarAlwaysOff</enum>
-      </property>
-      <property name="horizontalScrollBarPolicy">
-       <enum>Qt::ScrollBarAlwaysOff</enum>
-      </property>
-      <property name="widgetResizable">
-       <bool>true</bool>
-      </property>
-      <widget class="QWidget" name="scrollImgPreviewWidget">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>384</width>
-         <height>384</height>
-        </rect>
+      <layout class="QGridLayout" name="groupImgPreviewLayout" columnstretch="3">
+       <property name="sizeConstraint">
+        <enum>QLayout::SetNoConstraint</enum>
        </property>
-       <layout class="QGridLayout" name="scrollImgPreviewWidgetLayout">
-        <property name="leftMargin">
-         <number>0</number>
-        </property>
-        <property name="topMargin">
-         <number>0</number>
-        </property>
-        <property name="rightMargin">
-         <number>0</number>
-        </property>
-        <property name="bottomMargin">
-         <number>0</number>
-        </property>
-        <property name="spacing">
-         <number>0</number>
-        </property>
-        <item row="0" column="0">
-         <widget class="QLabel" name="labelImgPreviewText">
-          <property name="text">
-           <string>点击拖动图片，使用滚轮缩放(100%)</string>
+       <property name="leftMargin">
+        <number>4</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>4</number>
+       </property>
+       <property name="bottomMargin">
+        <number>4</number>
+       </property>
+       <property name="spacing">
+        <number>1</number>
+       </property>
+       <item row="0" column="0">
+        <widget class="QScrollArea" name="scrollImgPreview">
+         <property name="minimumSize">
+          <size>
+           <width>386</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>386</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="cursor" stdset="0">
+          <cursorShape>SizeAllCursor</cursorShape>
+         </property>
+         <property name="verticalScrollBarPolicy">
+          <enum>Qt::ScrollBarAlwaysOff</enum>
+         </property>
+         <property name="horizontalScrollBarPolicy">
+          <enum>Qt::ScrollBarAlwaysOff</enum>
+         </property>
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="scrollImgPreviewWidget">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>384</width>
+            <height>392</height>
+           </rect>
           </property>
-          <property name="alignment">
-           <set>Qt::AlignBottom|Qt::AlignRight|Qt::AlignTrailing</set>
-          </property>
+          <layout class="QGridLayout" name="scrollImgPreviewWidgetLayout">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item row="0" column="0">
+            <widget class="QLabel" name="labelImgPreviewText">
+             <property name="text">
+              <string>点击拖动图片，使用滚轮缩放(100%)</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignBottom|Qt::AlignRight|Qt::AlignTrailing</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+          <widget class="QLabel" name="labelImgPreviewShow">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>384</width>
+             <height>401</height>
+            </rect>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+          <widget class="QLabel" name="labelImgPreviewBack">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>384</width>
+             <height>401</height>
+            </rect>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+           </property>
+          </widget>
+          <zorder>labelImgPreviewBack</zorder>
+          <zorder>labelImgPreviewShow</zorder>
+          <zorder>labelImgPreviewText</zorder>
          </widget>
-        </item>
-       </layout>
-       <widget class="QLabel" name="labelImgPreviewShow">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>384</width>
-          <height>384</height>
-         </rect>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-       <widget class="QLabel" name="labelImgPreviewBack">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>384</width>
-          <height>384</height>
-         </rect>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-        </property>
-       </widget>
-       <zorder>labelImgPreviewBack</zorder>
-       <zorder>labelImgPreviewShow</zorder>
-       <zorder>labelImgPreviewText</zorder>
-      </widget>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QGroupBox" name="groupDisplaySetting">
-   <property name="geometry">
-    <rect>
-     <x>4</x>
-     <y>67</y>
-     <width>263</width>
-     <height>68</height>
-    </rect>
-   </property>
-   <property name="title">
-    <string>图片操作</string>
-   </property>
-   <layout class="QGridLayout" name="gridLayout_2">
-    <property name="leftMargin">
-     <number>3</number>
-    </property>
-    <property name="topMargin">
-     <number>0</number>
-    </property>
-    <property name="rightMargin">
-     <number>3</number>
-    </property>
-    <property name="bottomMargin">
-     <number>3</number>
-    </property>
-    <property name="spacing">
-     <number>2</number>
-    </property>
-    <item row="2" column="0">
-     <widget class="QLabel" name="labelDisplayColor">
-      <property name="text">
-       <string> 背景颜色:</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1" colspan="2">
-     <widget class="QLineEdit" name="inputDisplayType">
-      <property name="text">
-       <string>原图显示</string>
-      </property>
-      <property name="readOnly">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="3">
-     <widget class="QPushButton" name="btnChangeDisplayType">
-      <property name="text">
-       <string>切换显示</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="1" colspan="2">
-     <widget class="QLineEdit" name="inputDisplayColor">
-      <property name="text">
-       <string>透明</string>
-      </property>
-      <property name="readOnly">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="0">
-     <widget class="QLabel" name="labelDisplayType">
-      <property name="text">
-       <string> 显示方式:</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="3">
-     <widget class="QPushButton" name="btnChangeDisplayColor">
-      <property name="text">
-       <string>切换颜色</string>
-      </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </item>
    </layout>
