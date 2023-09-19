@@ -1,6 +1,6 @@
 import os
 from PySide6.QtCore import Qt
-from PySide6.QtGui import QPixmap, QImage, QPainter, QFontMetrics
+from PySide6.QtGui import QPixmap, QImage, QPainter, QFontMetrics, QColor
 from PySide6.QtWidgets import QTreeWidgetItem, QLabel, QFrame, QWidget, QSizePolicy
 from PIL import Image, ImageDraw
 
@@ -27,6 +27,17 @@ class ZiJun:
                 QImage.Format_RGB888,
             )
         )
+
+    def generateColor(width: int, height: int, color: QColor):
+        pixmap = QPixmap(width, height)
+        pixmap.fill(color)
+        return pixmap
+
+    def changeBackground(grid: bool, width: int, height: int, color: QColor = None):
+        if grid:
+            return ZiJun.generateGrid(width, height)
+        else:
+            return ZiJun.generateColor(width, height, color)
 
     def loadImage(path):
         image = []

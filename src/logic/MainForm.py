@@ -62,6 +62,7 @@ class MainForm(QMainWindow, Ui_MainForm):
     def __init__(self, parent=None):
         super(MainForm, self).__init__(parent)
         self.setupUi(self)
+
         self.groupMessage = GroupMessage(self)
         self.groupPath = GroupPath(self)
         self.groupImgTable = GroupImgTable(self)

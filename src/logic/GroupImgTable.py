@@ -9,10 +9,16 @@ from util.ZiJun import ZiJun
 class GroupImgTable:
     def __init__(self, parent):
         self.parent = parent
+
         self.backWidth = self.parent.labelImgTableBack.width()
         self.backHeight = 694
         pixmap = ZiJun.generateGrid(self.backWidth, self.backHeight)
+        self.parent.labelImgTableBack.setPixmap(pixmap)
         self.parent.labelImgTableBack.setFixedSize(self.backWidth, self.backHeight)
+
+    def changeBackground(self, color="transparent"):
+        if pixmap == None:
+            pixmap = ZiJun.generateGrid(self.backWidth, self.backHeight)
         self.parent.labelImgTableBack.setPixmap(pixmap)
 
     def generateMatrix(self, quantity):
@@ -33,12 +39,12 @@ class GroupImgTable:
         height = (quantity) * 72
         if height >= self.backHeight:
             pixmap = ZiJun.generateGrid(self.backWidth, height)
-            self.parent.labelImgTableBack.setFixedSize(self.backWidth, height)
             self.parent.labelImgTableBack.setPixmap(pixmap)
+            self.parent.labelImgTableBack.setFixedSize(self.backWidth, height)
         else:
             pixmap = ZiJun.generateGrid(self.backWidth, self.backHeight)
-            self.parent.labelImgTableBack.setFixedSize(self.backWidth, self.backHeight)
             self.parent.labelImgTableBack.setPixmap(pixmap)
+            self.parent.labelImgTableBack.setFixedSize(self.backWidth, self.backHeight)
         self.parent.scrollImgTableWidget.setFixedHeight(height)
         self.parent.scrollImgTableWidget.setFixedWidth(
             self.parent.labelImgTableBack.width()

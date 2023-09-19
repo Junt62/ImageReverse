@@ -1,6 +1,6 @@
 import os
 from PySide6.QtCore import Qt, QPoint
-from PySide6.QtGui import QPixmap, QImage, QWheelEvent
+from PySide6.QtGui import QPixmap, QImage, QWheelEvent, QColor
 
 from util.ZiJun import ZiJun
 
@@ -8,17 +8,25 @@ from util.ZiJun import ZiJun
 class GroupImgPreview:
     def __init__(self, parent):
         self.parent = parent
-        self.backgroundWidth = self.parent.labelImgPreviewBack.width()
-        self.backgroundHeight = self.parent.labelImgPreviewBack.height()
-        pixmap = ZiJun.generateGrid(self.backgroundWidth, self.backgroundHeight)
+
+        self.backWidth = self.parent.labelImgPreviewBack.width()
+        self.backHeight = self.parent.labelImgPreviewBack.height()
+        pixmap = ZiJun.generateGrid(self.backWidth, self.backHeight)
         self.parent.labelImgPreviewBack.setPixmap(pixmap)
+
         self.dragOffset = QPoint()
         self.parent.labelOffset = QPoint()
         self.parent.pixmapScale = 100
+
         self.parent.scrollImgPreview.mousePressEvent = self.mousePressEvent
         self.parent.scrollImgPreview.mouseReleaseEvent = self.mouseReleaseEvent
         self.parent.scrollImgPreview.mouseMoveEvent = self.mouseMoveEvent
         self.parent.scrollImgPreview.wheelEvent = self.wheelEvent
+
+    def changeBackground(self, color="transparent"):
+        if pixmap == None:
+            pixmap = ZiJun.generateGrid(self.backWidth, self.backHeight)
+        self.parent.labelImgPreviewBack.setPixmap(pixmap)
 
     def showImg(self, path: str):
         self.parent.pixmap = QPixmap(path)
