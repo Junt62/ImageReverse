@@ -25,6 +25,7 @@ class Ui_MainForm(object):
     def setupUi(self, MainForm):
         if not MainForm.objectName():
             MainForm.setObjectName(u"MainForm")
+        MainForm.resize(1257, 720)
         MainForm.setMinimumSize(QSize(1257, 720))
         MainForm.setMaximumSize(QSize(1257, 720))
         icon = QIcon()
@@ -165,12 +166,12 @@ class Ui_MainForm(object):
 
         self.groupProgressLayout.addWidget(self.inputPositionOldY, 0, 3, 1, 1)
 
-        self.btnOpenFolder = QPushButton(self.groupProgress)
-        self.btnOpenFolder.setObjectName(u"btnOpenFolder")
-        sizePolicy2.setHeightForWidth(self.btnOpenFolder.sizePolicy().hasHeightForWidth())
-        self.btnOpenFolder.setSizePolicy(sizePolicy2)
+        self.btnSpace1 = QPushButton(self.groupProgress)
+        self.btnSpace1.setObjectName(u"btnSpace1")
+        sizePolicy2.setHeightForWidth(self.btnSpace1.sizePolicy().hasHeightForWidth())
+        self.btnSpace1.setSizePolicy(sizePolicy2)
 
-        self.groupProgressLayout.addWidget(self.btnOpenFolder, 5, 0, 1, 1)
+        self.groupProgressLayout.addWidget(self.btnSpace1, 5, 0, 1, 1)
 
         self.labelPositionOld = QLabel(self.groupProgress)
         self.labelPositionOld.setObjectName(u"labelPositionOld")
@@ -181,8 +182,8 @@ class Ui_MainForm(object):
 
         self.btnApplyPosition = QPushButton(self.groupProgress)
         self.btnApplyPosition.setObjectName(u"btnApplyPosition")
-        sizePolicy1.setHeightForWidth(self.btnApplyPosition.sizePolicy().hasHeightForWidth())
-        self.btnApplyPosition.setSizePolicy(sizePolicy1)
+        sizePolicy2.setHeightForWidth(self.btnApplyPosition.sizePolicy().hasHeightForWidth())
+        self.btnApplyPosition.setSizePolicy(sizePolicy2)
 
         self.groupProgressLayout.addWidget(self.btnApplyPosition, 2, 2, 1, 1)
 
@@ -200,19 +201,19 @@ class Ui_MainForm(object):
 
         self.groupProgressLayout.addWidget(self.btnImgReverse, 5, 3, 1, 1)
 
-        self.btnAutoAlignment = QPushButton(self.groupProgress)
-        self.btnAutoAlignment.setObjectName(u"btnAutoAlignment")
-        sizePolicy2.setHeightForWidth(self.btnAutoAlignment.sizePolicy().hasHeightForWidth())
-        self.btnAutoAlignment.setSizePolicy(sizePolicy2)
+        self.btnImgAlignment = QPushButton(self.groupProgress)
+        self.btnImgAlignment.setObjectName(u"btnImgAlignment")
+        sizePolicy2.setHeightForWidth(self.btnImgAlignment.sizePolicy().hasHeightForWidth())
+        self.btnImgAlignment.setSizePolicy(sizePolicy2)
 
-        self.groupProgressLayout.addWidget(self.btnAutoAlignment, 2, 3, 1, 1)
+        self.groupProgressLayout.addWidget(self.btnImgAlignment, 2, 3, 1, 1)
 
-        self.btnChangeStructure = QPushButton(self.groupProgress)
-        self.btnChangeStructure.setObjectName(u"btnChangeStructure")
-        sizePolicy1.setHeightForWidth(self.btnChangeStructure.sizePolicy().hasHeightForWidth())
-        self.btnChangeStructure.setSizePolicy(sizePolicy1)
+        self.btnStructure = QPushButton(self.groupProgress)
+        self.btnStructure.setObjectName(u"btnStructure")
+        sizePolicy2.setHeightForWidth(self.btnStructure.sizePolicy().hasHeightForWidth())
+        self.btnStructure.setSizePolicy(sizePolicy2)
 
-        self.groupProgressLayout.addWidget(self.btnChangeStructure, 5, 2, 1, 1)
+        self.groupProgressLayout.addWidget(self.btnStructure, 5, 2, 1, 1)
 
         self.inputPositionOldX = QLineEdit(self.groupProgress)
         self.inputPositionOldX.setObjectName(u"inputPositionOldX")
@@ -361,7 +362,7 @@ class Ui_MainForm(object):
         self.labelDisplayType.setText(QCoreApplication.translate("MainForm", u" \u663e\u793a\u65b9\u5f0f:", None))
         self.labelDisplayColor.setText(QCoreApplication.translate("MainForm", u" \u80cc\u666f\u989c\u8272:", None))
         self.inputDisplayColor.setText(QCoreApplication.translate("MainForm", u"\u900f\u660e", None))
-        self.btnChangeDisplayColor.setText(QCoreApplication.translate("MainForm", u"\u5207\u6362\u989c\u8272", None))
+        self.btnChangeDisplayColor.setText(QCoreApplication.translate("MainForm", u"\u5207\u6362\u80cc\u666f", None))
         self.groupPath.setTitle(QCoreApplication.translate("MainForm", u"\u8def\u5f84\u9009\u62e9", None))
         self.btnImgPath.setText(QCoreApplication.translate("MainForm", u"\u7d20\u6750\u8def\u5f84", None))
         self.btnSavePath.setText(QCoreApplication.translate("MainForm", u"\u4fdd\u5b58\u4f4d\u7f6e", None))
@@ -370,13 +371,13 @@ class Ui_MainForm(object):
         self.btnReadPosition.setText(QCoreApplication.translate("MainForm", u"\u8bfb\u53d6\u5750\u6807", None))
         self.inputPositionNewX.setText(QCoreApplication.translate("MainForm", u"X=0", None))
         self.inputPositionOldY.setText(QCoreApplication.translate("MainForm", u"Y=0", None))
-        self.btnOpenFolder.setText(QCoreApplication.translate("MainForm", u"\u6253\u5f00\u6587\u4ef6", None))
+        self.btnSpace1.setText(QCoreApplication.translate("MainForm", u"\u4fdd\u7559\u6309\u94ae", None))
         self.labelPositionOld.setText(QCoreApplication.translate("MainForm", u" \u539f\u59cb\u5750\u6807:", None))
         self.btnApplyPosition.setText(QCoreApplication.translate("MainForm", u"\u5e94\u7528\u5750\u6807", None))
         self.labelPositionNew.setText(QCoreApplication.translate("MainForm", u" \u65b0\u7684\u5750\u6807:", None))
         self.btnImgReverse.setText(QCoreApplication.translate("MainForm", u"\u7ffb\u8f6c\u56fe\u7247", None))
-        self.btnAutoAlignment.setText(QCoreApplication.translate("MainForm", u"\u4e00\u952e\u5bf9\u9f50", None))
-        self.btnChangeStructure.setText(QCoreApplication.translate("MainForm", u"\u8c03\u6574\u7ed3\u6784", None))
+        self.btnImgAlignment.setText(QCoreApplication.translate("MainForm", u"\u5bf9\u9f50\u56fe\u7247", None))
+        self.btnStructure.setText(QCoreApplication.translate("MainForm", u"\u8c03\u6574\u7ed3\u6784", None))
         self.inputPositionOldX.setText(QCoreApplication.translate("MainForm", u"X=0", None))
         self.groupImgTable.setTitle(QCoreApplication.translate("MainForm", u"\u56fe\u7247\u5217\u8868", None))
         self.groupListImg.setTitle(QCoreApplication.translate("MainForm", u"\u56fe\u7247\u5217\u8868", None))

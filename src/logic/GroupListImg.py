@@ -23,19 +23,22 @@ class GroupListImg:
             # 读取项目与生成项目
             file = os.path.basename(path)
             path = os.path.dirname(path)
-            itemList = [str(index), file, path]
-            item = QTreeWidgetItem(self.parent.listImgTree, itemList)
+            if not "处理后" in file and not "处理后" in path:
+                itemList = [str(index + 1), file, path]
+                item = QTreeWidgetItem(self.parent.listImgTree, itemList)
 
-            # 获取项目列表中最大列宽
-            for i in range(3):
-                fontMatrics = QFontMetrics(self.parent.listImgTree.font())
-                textWidth = fontMatrics.horizontalAdvance(itemList[i])
-                maxWidth[i] = max(maxWidth[i], textWidth)
+                # 获取项目列表中最大列宽
+                for i in range(3):
+                    fontMatrics = QFontMetrics(self.parent.listImgTree.font())
+                    textWidth = fontMatrics.horizontalAdvance(itemList[i])
+                    maxWidth[i] = max(maxWidth[i], textWidth)
 
-            # 如果是第一次生成项目，那么选中当前项目
-            if first:
-                first = False
-                self.parent.listImgTree.setCurrentItem(item)
+                # 如果是第一次生成项目，那么选中当前项目
+                if first:
+                    first = False
+                    self.parent.listImgTree.setCurrentItem(item)
+            else:
+                self.parent.groupMessage.errorMessage("素材路径中不可含有 “处理后” 文字")
 
         # 设置列宽
         for i in range(3):
@@ -43,7 +46,9 @@ class GroupListImg:
 
         # 调用函数显示小预览图
         self.parent.groupImgTable.showImg(len(image))
-        self.parent.groupMessage.successMessage(f"读取文件夹完成，发现 {len(image)} 张图片")
+        self.parent.groupMessage.successMessage(
+            f"读取文件夹完成，发现 {self.parent.listImgTree.topLevelItemCount()} 张图片"
+        )
 
     def generateTable(self):
         # 设置列标题

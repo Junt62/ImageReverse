@@ -58,6 +58,8 @@ class GroupPath:
             self.parent.groupMessage.errorMessage("不可设置盘符为素材路径")
             return
 
+        self.parent.groupMessage.normalMessage("读取图片中...")
+
         folder = path.split("\\")[-1]
         self.parent.inputSavePath.setText(path + "\\处理后")
         self.parent.groupListImg.loadImage()
