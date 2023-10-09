@@ -1,0 +1,1 @@
+pyinstaller -Fw -i=resources/icon.ico ImageReverse.py
