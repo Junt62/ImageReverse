@@ -6,7 +6,7 @@ from logic.GroupPath import GroupPath
 from logic.GroupImgPreview import GroupImgPreview
 from logic.GroupImgTable import GroupImgTable
 from logic.GroupProgress import GroupProgress
-from resources.ImageReverse_ui import Ui_MainForm
+from res.ImageReverse_ui import Ui_MainForm
 from PIL import Image
 
 from util.ZiJun import ZiJun

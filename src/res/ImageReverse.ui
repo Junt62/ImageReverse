@@ -740,7 +740,7 @@
   </widget>
  </widget>
  <resources>
-  <include location="resources.resources.qrc"/>
+  <include location="res.resources.qrc"/>
  </resources>
  <connections/>
 </ui>

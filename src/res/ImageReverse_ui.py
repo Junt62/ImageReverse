@@ -19,7 +19,7 @@ from PySide6.QtWidgets import (QAbstractScrollArea, QApplication, QFrame, QGridL
     QGroupBox, QHeaderView, QLabel, QLayout,
     QLineEdit, QPushButton, QScrollArea, QSizePolicy,
     QTextEdit, QTreeWidget, QTreeWidgetItem, QWidget)
-import resources.resources_rc
+import res.resources_rc
 
 class Ui_MainForm(object):
     def setupUi(self, MainForm):
